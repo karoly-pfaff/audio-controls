@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TransportControls } from '@karoly-pfaff/audio-controls-react';
+import { TransportControls } from '@karoly-pfaff/audio-controls';
 
 export function TransportDemo(): ReactElement {
   const [playing, setPlaying] = useState(false);

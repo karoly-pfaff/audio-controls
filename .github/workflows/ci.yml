@@ -39,11 +39,11 @@ jobs:
         run: npm run release:check
       - uses: actions/upload-artifact@v6
         with:
-          name: audio-controls-react-candidate
+          name: audio-controls-candidate
           if-no-files-found: error
           retention-days: 7
           path: |
-            artifacts/karoly-pfaff-audio-controls-react-*.tgz
+            artifacts/karoly-pfaff-audio-controls-*.tgz
             artifacts/package-report.json
             docs/site/build/index.html
       - name: Upload the verified documentation to GitHub Pages

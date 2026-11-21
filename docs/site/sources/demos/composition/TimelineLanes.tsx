@@ -4,8 +4,8 @@ import {
   TimelineWaveform,
   TimelineRegionLane,
   TimelinePlayhead,
-} from '@karoly-pfaff/audio-controls-react/timeline';
-import type { TimelineView } from '@karoly-pfaff/audio-controls-react/timeline';
+} from '@karoly-pfaff/audio-controls/timeline';
+import type { TimelineView } from '@karoly-pfaff/audio-controls/timeline';
 import { DEMO_DURATION, DEMO_PEAKS, DEMO_REGIONS } from '../../fixtures/demoAudio.ts';
 
 export function TimelineLanes(props: {

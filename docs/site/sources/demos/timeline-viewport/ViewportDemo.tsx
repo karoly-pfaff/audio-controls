@@ -4,7 +4,7 @@ import {
   TimelineViewport,
   TimelineRuler,
   TimelineZoom,
-} from '@karoly-pfaff/audio-controls-react/timeline';
+} from '@karoly-pfaff/audio-controls/timeline';
 
 export function ViewportDemo(): ReactElement {
   const [position, setPosition] = useState(30);

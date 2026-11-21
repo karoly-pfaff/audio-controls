@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { renderToString } from 'react-dom/server';
-import { Slider } from '@karoly-pfaff/audio-controls-react';
-import { TimelineRuler, timelineTicks } from '@karoly-pfaff/audio-controls-react/timeline';
+import { Slider } from '@karoly-pfaff/audio-controls';
+import { TimelineRuler, timelineTicks } from '@karoly-pfaff/audio-controls/timeline';
 import { strict as assert } from 'node:assert';
 
 assert(

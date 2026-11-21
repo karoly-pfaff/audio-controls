@@ -1,5 +1,5 @@
-import type { WaveformPeaks } from '@karoly-pfaff/audio-controls-react';
-import type { TimelineRegion } from '@karoly-pfaff/audio-controls-react/timeline';
+import type { WaveformPeaks } from '@karoly-pfaff/audio-controls';
+import type { TimelineRegion } from '@karoly-pfaff/audio-controls/timeline';
 
 export const DEMO_DURATION = 120;
 

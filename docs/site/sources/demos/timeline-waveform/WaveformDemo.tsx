@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TimelineWaveform } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineWaveform } from '@karoly-pfaff/audio-controls/timeline';
 import { DEMO_PEAKS } from '../../fixtures/demoAudio.ts';
 
 export function WaveformDemo(): ReactElement {

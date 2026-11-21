@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { CanvasWaveform } from '@karoly-pfaff/audio-controls-react';
+import { CanvasWaveform } from '@karoly-pfaff/audio-controls';
 import { DEMO_PEAKS } from '../../fixtures/demoAudio.ts';
 
 export function CanvasDemo(): ReactElement {

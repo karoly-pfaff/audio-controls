@@ -1,10 +1,10 @@
-import { Slider, Knob, StereoMeter, CanvasWaveform } from '@karoly-pfaff/audio-controls-react';
+import { Slider, Knob, StereoMeter, CanvasWaveform } from '@karoly-pfaff/audio-controls';
 import {
   TimelineViewport,
   TimelineWaveform,
   TimelineRuler,
   TimelinePlayhead,
-} from '@karoly-pfaff/audio-controls-react/timeline';
+} from '@karoly-pfaff/audio-controls/timeline';
 
 export const controls = (
   <>

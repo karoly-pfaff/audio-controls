@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       publish:
-        description: Publish the verified tarball (requires the matching vVERSION tag)
+        description: Publish the verified tarball (requires the matching audio-controls-vVERSION tag)
         required: true
         default: false
         type: boolean
@@ -54,11 +54,11 @@ jobs:
         run: npm run docs:build
       - uses: actions/upload-artifact@v6
         with:
-          name: audio-controls-react-release-candidate
+          name: audio-controls-release-candidate
           if-no-files-found: error
           retention-days: 14
           path: |
-            artifacts/karoly-pfaff-audio-controls-react-*.tgz
+            artifacts/karoly-pfaff-audio-controls-*.tgz
             artifacts/package-report.json
             docs/site/build/index.html
       - name: Publish the exact verified archive

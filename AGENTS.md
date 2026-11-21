@@ -1,4 +1,4 @@
-# Audio Controls React contributor rules
+# Audio Controls contributor rules
 
 Read [coding standards](docs/development/coding-standards.md),
 [code quality](docs/development/code-quality.md), [architecture](docs/architecture.md) and
@@ -62,8 +62,8 @@ task response. A configured target is not a passed result.
 
 ## GitHub Packages
 
-The package name is @karoly-pfaff/audio-controls-react, the registry is GitHub Packages and the
-repository is karoly-pfaff/audio-controls-react. Repository and package visibility are configured
+The package name is @karoly-pfaff/audio-controls, the registry is GitHub Packages and the
+repository is karoly-pfaff/audio-controls. Repository and package visibility are configured
 separately for public access. Keep registry credentials outside committed files.
 
 On a fresh checkout, install dependencies with npm ci, then run checks in this order:

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TransportButton } from '@karoly-pfaff/audio-controls-react';
+import { TransportButton } from '@karoly-pfaff/audio-controls';
 
 export function TransportButtonDemo(): ReactElement {
   const [action, setAction] = useState('none');

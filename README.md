@@ -1,4 +1,4 @@
-# Audio Controls React
+# Audio Controls
 
 Controlled React audio controls and source-time timeline components.
 The package supports React ^18.3.1 and ^19.0.0 through a peer dependency.
@@ -11,7 +11,7 @@ For a published version, authenticate with GitHub Packages and install the exact
 ```sh
 npm login --scope=@karoly-pfaff --auth-type=legacy --registry=https://npm.pkg.github.com
 npm config set @karoly-pfaff:registry=https://npm.pkg.github.com --location=project
-npm install --save-exact @karoly-pfaff/audio-controls-react@0.1.0
+npm install --save-exact @karoly-pfaff/audio-controls@0.1.0
 ```
 
 GitHub requires authentication for public npm packages too. See the
@@ -23,8 +23,8 @@ migration aliases. To build a local tarball, follow [local development](#local-d
 ```tsx
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { Slider } from '@karoly-pfaff/audio-controls-react';
-import '@karoly-pfaff/audio-controls-react/styles.css';
+import { Slider } from '@karoly-pfaff/audio-controls';
+import '@karoly-pfaff/audio-controls/styles.css';
 
 export function OutputGain(): ReactElement {
   const [gain, setGain] = useState(0.75);
@@ -42,11 +42,11 @@ Use a React bundler with ESM and CSS import support, including its TypeScript de
 
 ## Public entries
 
-| Entry                                           | Exports                                                                                                                                          |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `@karoly-pfaff/audio-controls-react`            | Slider, Knob, ToggleButton, TransportControls, TransportButton, StereoMeter, CanvasWaveform, waveformPeaksFromChannels and their prop/data types |
-| `@karoly-pfaff/audio-controls-react/timeline`   | TimelineViewport, TimelineRuler, TimelineWaveform, TimelineRegionLane, TimelinePlayhead, TimelineZoom and source-time geometry/peak helpers      |
-| `@karoly-pfaff/audio-controls-react/styles.css` | Optional default styling, scoped to `acr-` classes                                                                                               |
+| Entry                                     | Exports                                                                                                                                          |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `@karoly-pfaff/audio-controls`            | Slider, Knob, ToggleButton, TransportControls, TransportButton, StereoMeter, CanvasWaveform, waveformPeaksFromChannels and their prop/data types |
+| `@karoly-pfaff/audio-controls/timeline`   | TimelineViewport, TimelineRuler, TimelineWaveform, TimelineRegionLane, TimelinePlayhead, TimelineZoom and source-time geometry/peak helpers      |
+| `@karoly-pfaff/audio-controls/styles.css` | Optional default styling, scoped to `acr-` classes                                                                                               |
 
 All controls receive their values and actions from the host. Linear gain, pan in the range -1 to 1,
 source seconds and waveform position ratios are distinct units. A dB display label formats linear
@@ -63,7 +63,7 @@ it. No global keyboard listener is installed.
 
 ## Light and dark themes
 
-Import `@karoly-pfaff/audio-controls-react/styles.css`, then wrap controls in a container with
+Import `@karoly-pfaff/audio-controls/styles.css`, then wrap controls in a container with
 `data-acr-theme="light"` or `data-acr-theme="dark"`. Theme groups can be nested independently.
 Override `--acr-accent`, `--acr-on-accent`, `--acr-waveform`, `--acr-radius` and the other
 semantic tokens on the same container to match your application. Palette rules have zero
@@ -127,7 +127,7 @@ package; public consumers require no producer-workspace source imports.
 
 ## Documentation and GitHub Pages
 
-The Pages workflow publishes to https://karoly-pfaff.github.io/audio-controls-react/.
+The Pages workflow publishes to https://karoly-pfaff.github.io/audio-controls/.
 Web sources and chapters live in docs/site; contributor and release guides share the docs/ namespace.
 
 Run `npm run docs:build`, then open

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { ToggleButton } from '@karoly-pfaff/audio-controls-react';
+import { ToggleButton } from '@karoly-pfaff/audio-controls';
 
 export function ToggleDemo(): ReactElement {
   const [enabled, setEnabled] = useState({ mute: false, solo: true, loop: false });

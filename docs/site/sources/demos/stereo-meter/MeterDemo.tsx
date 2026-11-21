@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import type { ReactElement } from 'react';
-import { StereoMeter } from '@karoly-pfaff/audio-controls-react';
+import { StereoMeter } from '@karoly-pfaff/audio-controls';
 import { readDemoLevels } from '../../fixtures/demoAudio.ts';
 
 export function MeterDemo(): ReactElement {

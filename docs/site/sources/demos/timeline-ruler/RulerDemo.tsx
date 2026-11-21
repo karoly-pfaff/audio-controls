@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TimelineRuler } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineRuler } from '@karoly-pfaff/audio-controls/timeline';
 
 export function RulerDemo(): ReactElement {
   const [duration, setDuration] = useState(120);

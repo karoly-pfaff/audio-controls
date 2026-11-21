@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TimelineRuler, TimelinePlayhead } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineRuler, TimelinePlayhead } from '@karoly-pfaff/audio-controls/timeline';
 
 export function PlayheadDemo(): ReactElement {
   const [position, setPosition] = useState(42);

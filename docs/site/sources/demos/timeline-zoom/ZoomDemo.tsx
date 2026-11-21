@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TimelineZoom } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineZoom } from '@karoly-pfaff/audio-controls/timeline';
 
 export function ZoomDemo(): ReactElement {
   const [zoom, setZoom] = useState(1);

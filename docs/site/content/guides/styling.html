@@ -11,7 +11,7 @@
       <span>Choose a theme per container</span
       ><button type="button" data-copy="code-theme-setup">Copy</button>
     </div>
-    <pre><code id="code-theme-setup">import '@karoly-pfaff/audio-controls-react/styles.css';
+    <pre><code id="code-theme-setup">import '@karoly-pfaff/audio-controls/styles.css';
 
 &lt;div data-acr-theme="light"&gt;{/* your audio controls */}&lt;/div&gt;
 &lt;div data-acr-theme="dark"&gt;{/* another independent group */}&lt;/div&gt;</code></pre>
@@ -30,8 +30,8 @@
     </div>
     <pre><code id="code-theme-react">import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { Slider } from '@karoly-pfaff/audio-controls-react';
-import '@karoly-pfaff/audio-controls-react/styles.css';
+import { Slider } from '@karoly-pfaff/audio-controls';
+import '@karoly-pfaff/audio-controls/styles.css';
 
 export function ThemedGain(): ReactElement {
   const [theme, setTheme] = useState&lt;'light' | 'dark'&gt;('light');

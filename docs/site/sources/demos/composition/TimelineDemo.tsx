@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TimelineViewport } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineViewport } from '@karoly-pfaff/audio-controls/timeline';
 import { TimelineLanes } from './TimelineLanes.tsx';
 import { TimelineToolbar } from './TimelineToolbar.tsx';
 import { DEMO_DURATION } from '../../fixtures/demoAudio.ts';

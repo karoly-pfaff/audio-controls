@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import { TimelineZoom, formatTimelineTime } from '@karoly-pfaff/audio-controls-react/timeline';
-import type { TimelineView } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineZoom, formatTimelineTime } from '@karoly-pfaff/audio-controls/timeline';
+import type { TimelineView } from '@karoly-pfaff/audio-controls/timeline';
 import { DEMO_DURATION } from '../../fixtures/demoAudio.ts';
 
 export function TimelineToolbar(props: {

@@ -22,7 +22,7 @@ const CONTEXT = {
   PUBLISH_REQUESTED: 'true',
   RELEASE_VERSION: '0.1.0',
   GITHUB_REPOSITORY: REPOSITORY,
-  GITHUB_REF: 'refs/tags/v0.1.0',
+  GITHUB_REF: 'refs/tags/audio-controls-v0.1.0',
 };
 
 test('accepts the chosen scoped MIT package and exact tagged dispatch', () => {
@@ -39,7 +39,7 @@ test('accepts the chosen scoped MIT package and exact tagged dispatch', () => {
 
 test('rejects changed registry, scope, license, repository and private flag', () => {
   for (const override of [
-    { name: 'audio-controls-react' },
+    { name: 'audio-controls' },
     { license: 'ISC' },
     { repository: {} },
     { publishConfig: {} },
@@ -65,7 +65,8 @@ test('rejects local, dry-run, foreign-repository, branch and mismatched-tag publ
     { PUBLISH_REQUESTED: 'false' },
     { GITHUB_REPOSITORY: 'other/repo' },
     { GITHUB_REF: 'refs/heads/main' },
-    { GITHUB_REF: 'refs/tags/v0.2.0' },
+    { GITHUB_REF: 'refs/tags/audio-controls-v0.2.0' },
+    { GITHUB_REF: 'refs/tags/v0.1.0' },
     { RELEASE_VERSION: '0.2.0' },
   ])
     assert.throws(() => {

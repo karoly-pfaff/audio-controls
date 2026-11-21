@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { TimelineRegionLane } from '@karoly-pfaff/audio-controls-react/timeline';
+import { TimelineRegionLane } from '@karoly-pfaff/audio-controls/timeline';
 import { DEMO_REGIONS } from '../../fixtures/demoAudio.ts';
 
 export function RegionsDemo(): ReactElement {

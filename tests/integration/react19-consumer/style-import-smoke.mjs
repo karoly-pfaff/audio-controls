@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { strict as assert } from 'node:assert';
 
-const entry = new URL(import.meta.resolve('@karoly-pfaff/audio-controls-react/styles.css'));
+const entry = new URL(import.meta.resolve('@karoly-pfaff/audio-controls/styles.css'));
 const root = new URL('./', entry);
 const visited = new Set();
 

@@ -1,5 +1,5 @@
-export const PACKAGE_NAME = '@karoly-pfaff/audio-controls-react';
-export const REPOSITORY = 'karoly-pfaff/audio-controls-react';
+export const PACKAGE_NAME = '@karoly-pfaff/audio-controls';
+export const REPOSITORY = 'karoly-pfaff/audio-controls';
 export const REGISTRY = 'https://npm.pkg.github.com';
 
 export function assertReleaseIdentity(manifest) {
@@ -32,6 +32,6 @@ export function assertPublishContext(manifest, context) {
     throw new Error('Publication requires an explicit GitHub Actions publish dispatch.');
   if (context.GITHUB_REPOSITORY !== REPOSITORY)
     throw new Error('Publication must run in the owning repository.');
-  if (context.GITHUB_REF !== 'refs/tags/v' + manifest.version)
+  if (context.GITHUB_REF !== 'refs/tags/audio-controls-v' + manifest.version)
     throw new Error('Publication must run from the matching version tag.');
 }

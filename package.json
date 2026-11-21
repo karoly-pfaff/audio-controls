@@ -1,5 +1,5 @@
 {
-  "name": "@karoly-pfaff/audio-controls-react",
+  "name": "@karoly-pfaff/audio-controls",
   "version": "0.1.0",
   "description": "Accessible controlled audio controls and source-time timelines for React.",
   "license": "MIT",
@@ -80,11 +80,11 @@
   "author": "Károly Pfaff",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/karoly-pfaff/audio-controls-react.git"
+    "url": "git+https://github.com/karoly-pfaff/audio-controls.git"
   },
-  "homepage": "https://karoly-pfaff.github.io/audio-controls-react/",
+  "homepage": "https://karoly-pfaff.github.io/audio-controls/",
   "bugs": {
-    "url": "https://github.com/karoly-pfaff/audio-controls-react/issues"
+    "url": "https://github.com/karoly-pfaff/audio-controls/issues"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

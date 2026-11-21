@@ -7,7 +7,7 @@ The custom Actions deployment does not run Jekyll.
 
 ## Hosted setup
 
-1. In the public karoly-pfaff/audio-controls-react repository, open Settings → Pages.
+1. In the public karoly-pfaff/audio-controls repository, open Settings → Pages.
 2. Under Build and deployment, select GitHub Actions as the source.
 3. Ensure the github-pages environment allows deployment from main. Configure any desired
    environment review rules explicitly; an environment name alone does not enable protection.
@@ -17,7 +17,7 @@ The custom Actions deployment does not run Jekyll.
 6. After verification succeeds, the pages job uses actions/deploy-pages with pages:write and
    id-token:write. Its deployment output supplies the actual site URL to the environment.
 
-Expected project URL: https://karoly-pfaff.github.io/audio-controls-react/.
+Expected project URL: https://karoly-pfaff.github.io/audio-controls/.
 
 There is no gh-pages source branch and no generated-site commit. Main-branch CI changes publish
 the current documentation automatically after passing checks. A pull request retains an HTML

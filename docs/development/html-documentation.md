@@ -33,7 +33,7 @@ uses deploy-pages with the github-pages environment and scoped Pages/OIDC permis
 Pull requests build downloadable HTML previews without a Pages upload or deployment.
 
 Expected project URL after the first deployment:
-https://karoly-pfaff.github.io/audio-controls-react/
+https://karoly-pfaff.github.io/audio-controls/
 
 The existing CI owns this pipeline, so a second workflow does not repeat the same quality gate.
 Main runs serialize rather than cancel an in-progress deployment. Package publishing stays in

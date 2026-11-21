@@ -17,7 +17,7 @@ import { TimelineDemo } from './demos/composition/TimelineDemo.tsx';
 import { PeaksDemo } from './demos/peak-reduction/PeaksDemo.tsx';
 import { ThemeDemo } from './demos/themes/ThemeDemo.tsx';
 import { initializeDocumentation } from './navigation/initializeDocumentation.ts';
-import '@karoly-pfaff/audio-controls-react/styles.css';
+import '@karoly-pfaff/audio-controls/styles.css';
 import './styles/base.css';
 import './styles/layout.css';
 import './styles/content.css';

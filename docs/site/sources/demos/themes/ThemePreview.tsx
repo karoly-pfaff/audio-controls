@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { Slider, Knob, ToggleButton } from '@karoly-pfaff/audio-controls-react';
-import { TimelineRuler, TimelineWaveform } from '@karoly-pfaff/audio-controls-react/timeline';
+import { Slider, Knob, ToggleButton } from '@karoly-pfaff/audio-controls';
+import { TimelineRuler, TimelineWaveform } from '@karoly-pfaff/audio-controls/timeline';
 import { DEMO_PEAKS } from '../../fixtures/demoAudio.ts';
 import { ThemeWaveform } from './ThemeWaveform.tsx';
 

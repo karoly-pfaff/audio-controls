@@ -32,6 +32,6 @@ writeFileSync(
 );
 copyFileSync(
   resolve(PACKAGE_ROOT, 'artifacts', packed.filename),
-  resolve(PACKAGE_ROOT, 'artifacts/audio-controls-react.tgz'),
+  resolve(PACKAGE_ROOT, 'artifacts/audio-controls.tgz'),
 );
 console.log('Validated candidate: ' + packed.filename + ' · SHA-256 ' + report.sha256);

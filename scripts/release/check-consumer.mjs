@@ -10,7 +10,7 @@ console.log(
   runNpm(
     [
       'install',
-      '@karoly-pfaff/audio-controls-react@file:../../../artifacts/audio-controls-react.tgz',
+      '@karoly-pfaff/audio-controls@file:../../../artifacts/audio-controls.tgz',
       '--force',
       '--ignore-scripts',
       '--no-audit',

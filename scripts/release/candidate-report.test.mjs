@@ -8,7 +8,7 @@ import {
 } from './candidate-report.mjs';
 import { packageFileIssues, stylesheetImports } from './package-files.mjs';
 
-const MANIFEST = { name: '@karoly-pfaff/audio-controls-react', version: '0.1.0' };
+const MANIFEST = { name: '@karoly-pfaff/audio-controls', version: '0.1.0' };
 
 const FILES = [
   'package.json',

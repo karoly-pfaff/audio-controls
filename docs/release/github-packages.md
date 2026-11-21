@@ -2,8 +2,8 @@
 
 ## Package configuration
 
-- Repository: https://github.com/karoly-pfaff/audio-controls-react.
-- Package: @karoly-pfaff/audio-controls-react on https://npm.pkg.github.com.
+- Repository: https://github.com/karoly-pfaff/audio-controls.
+- Package: @karoly-pfaff/audio-controls on https://npm.pkg.github.com.
 - Visibility: public repository and package, configured separately in GitHub settings.
 - License: MIT, provided by the root LICENSE.
 
@@ -30,8 +30,8 @@ run with skipLibCheck=false and negative type contracts; SSR needs no browser au
 Fixture dependency versions stay exact; its lockfile is intentionally refreshed for the new local
 archive bytes. The archive is generated from this checkout rather than checked into Git.
 
-The versioned archive is artifacts/karoly-pfaff-audio-controls-react-0.1.0.tgz. A stable local copy
-at artifacts/audio-controls-react.tgz lets the fixture work with later package versions without a
+The versioned archive is artifacts/karoly-pfaff-audio-controls-0.1.0.tgz. A stable local copy
+at artifacts/audio-controls.tgz lets the fixture work with later package versions without a
 manifest rewrite. artifacts/package-report.json records the actual file list, SHA-256, npm integrity
 and workflow commit (null for local candidates). The report and archives are ignored generated output.
 
@@ -64,7 +64,7 @@ routes only @karoly-pfaff to GitHub Packages; other dependency scopes keep their
 1. Upload the reviewed commit and run Library quality.
 2. Run GitHub Packages candidate manually with version=0.1.0 and publish=false. Review its candidate
    report, consumer results, coverage and offline HTML artifact. This mode performs no publish.
-3. Create the version tag v0.1.0 on the exact reviewed release commit.
+3. Create the package version tag audio-controls-v0.1.0 on the exact reviewed release commit.
 4. Select that tag in the manual workflow dispatch, set version=0.1.0 and publish=true.
 5. The job repeats the checks and publishes the exact validated tarball with latest after checking
    its digest and build commit. Branch dispatches, mismatched tags/versions, other repositories and
@@ -88,17 +88,17 @@ your user credential configuration, never commit it or paste it into project fil
 ```sh
 npm login --scope=@karoly-pfaff --auth-type=legacy --registry=https://npm.pkg.github.com
 npm config set @karoly-pfaff:registry=https://npm.pkg.github.com --location=project
-npm install --save-exact @karoly-pfaff/audio-controls-react@0.1.0
+npm install --save-exact @karoly-pfaff/audio-controls@0.1.0
 ```
 
 Import the scoped root, /timeline and /styles.css entries. Consumers that use unscoped import
 strings can use an npm alias after publication:
 
 ```sh
-npm install --save-exact audio-controls-react@npm:@karoly-pfaff/audio-controls-react@0.1.0
+npm install --save-exact audio-controls@npm:@karoly-pfaff/audio-controls@0.1.0
 ```
 
-An alias preserves imports such as audio-controls-react/timeline while locking the scoped registry
+An alias preserves imports such as audio-controls/timeline while locking the scoped registry
 version. Deliberately replace the old vendor/file dependency and update that host's lockfile; then
 run its targeted integration/accessibility checks.
 For consumer GitHub Actions, use packages:read and NODE_AUTH_TOKEN with a registry mapping; grant

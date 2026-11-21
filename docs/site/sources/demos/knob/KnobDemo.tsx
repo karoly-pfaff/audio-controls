@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { Knob, Slider } from '@karoly-pfaff/audio-controls-react';
+import { Knob, Slider } from '@karoly-pfaff/audio-controls';
 
 export function KnobDemo(): ReactElement {
   const [pan, setPan] = useState(0);

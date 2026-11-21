@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { CanvasWaveform, waveformPeaksFromChannels } from '@karoly-pfaff/audio-controls-react';
+import { CanvasWaveform, waveformPeaksFromChannels } from '@karoly-pfaff/audio-controls';
 
 export function PeaksDemo(): ReactElement {
   const [allChannels, setAllChannels] = useState(true);

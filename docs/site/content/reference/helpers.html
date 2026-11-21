@@ -2,7 +2,7 @@
   <span class="section-number">17 / PURE HELPERS</span>
   <h2>Waveform peak reduction</h2>
   <span class="import-path"
-    >import { waveformPeaksFromChannels } from '@karoly-pfaff/audio-controls-react'</span
+    >import { waveformPeaksFromChannels } from '@karoly-pfaff/audio-controls'</span
   >
   <p>
     Convert channel sample arrays into visual minimum/maximum columns. This is a display helper,
@@ -69,7 +69,7 @@ const peaks = waveformPeaksFromChannels(channels, {
 <section id="geometry">
   <span class="section-number">18 / PURE HELPERS</span>
   <h2>Timeline geometry helpers</h2>
-  <span class="import-path">import { … } from '@karoly-pfaff/audio-controls-react/timeline'</span>
+  <span class="import-path">import { … } from '@karoly-pfaff/audio-controls/timeline'</span>
   <p>
     Use these functions when building host-specific lanes while retaining the same source-time
     geometry as the ready-made controls.
@@ -148,7 +148,7 @@ const peaks = waveformPeaksFromChannels(channels, {
     </div>
     <pre><code id="code-geometry">import {
   timelineRegionStyle, isTimelineRegionVisible, formatTimelineTime,
-} from '@karoly-pfaff/audio-controls-react/timeline';
+} from '@karoly-pfaff/audio-controls/timeline';
 
 const region = { start: 24, end: 60 };
 const style = timelineRegionStyle(region, 120); // { left: '20%', width: '30%' }

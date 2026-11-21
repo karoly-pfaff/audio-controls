@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { Slider } from '@karoly-pfaff/audio-controls-react';
+import { Slider } from '@karoly-pfaff/audio-controls';
 
 export function SliderDemo(): ReactElement {
   const [gain, setGain] = useState(0.75);

@@ -48,7 +48,7 @@
     </div>
     <pre><code id="code-install">npm login --scope=@karoly-pfaff --auth-type=legacy --registry=https://npm.pkg.github.com
 npm config set @karoly-pfaff:registry=https://npm.pkg.github.com --location=project
-npm install --save-exact @karoly-pfaff/audio-controls-react@0.1.0</code></pre>
+npm install --save-exact @karoly-pfaff/audio-controls@0.1.0</code></pre>
   </div>
   <p>
     The package supports <code>react ^18.3.1 || ^19.0.0</code>. Your host supplies React and its
@@ -64,15 +64,15 @@ npm install --save-exact @karoly-pfaff/audio-controls-react@0.1.0</code></pre>
       </thead>
       <tbody>
         <tr>
-          <td><code>@karoly-pfaff/audio-controls-react</code></td>
+          <td><code>@karoly-pfaff/audio-controls</code></td>
           <td>Sliders, knobs, toggles, transport, meter, canvas waveform and peak reduction</td>
         </tr>
         <tr>
-          <td><code>@karoly-pfaff/audio-controls-react/timeline</code></td>
+          <td><code>@karoly-pfaff/audio-controls/timeline</code></td>
           <td>Viewport, ruler, SVG waveform, regions, playhead, zoom and geometry helpers</td>
         </tr>
         <tr>
-          <td><code>@karoly-pfaff/audio-controls-react/styles.css</code></td>
+          <td><code>@karoly-pfaff/audio-controls/styles.css</code></td>
           <td>Base layout, focus treatment and scoped light/dark themes</td>
         </tr>
       </tbody>
@@ -85,8 +85,8 @@ npm install --save-exact @karoly-pfaff/audio-controls-react@0.1.0</code></pre>
     </div>
     <pre><code id="code-quickstart">import { useState } from 'react';
 import type { ReactElement } from 'react';
-import { Slider } from '@karoly-pfaff/audio-controls-react';
-import '@karoly-pfaff/audio-controls-react/styles.css';
+import { Slider } from '@karoly-pfaff/audio-controls';
+import '@karoly-pfaff/audio-controls/styles.css';
 
 export function OutputGain(): ReactElement {
   const [gain, setGain] = useState(0.75);
