@@ -1,0 +1,17 @@
+{
+  "path": ["sources", "scripts", "docs/site/sources"],
+  "pattern": "**/*.{ts,tsx,mjs}",
+  "threshold": 0,
+  "minLines": 4,
+  "minTokens": 50,
+  "mode": "strict",
+  "reporters": ["console", "threshold"],
+  "ignore": [
+    "**/node_modules/**",
+    "**/build/**",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.test.mjs",
+    "**/*.test-support.ts"
+  ]
+}

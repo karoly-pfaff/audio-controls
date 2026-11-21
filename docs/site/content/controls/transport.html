@@ -1,0 +1,49 @@
+<section id="transport-controls">
+  <span class="section-number">07 / AUDIO CONTROLS</span>
+  <h2>TransportControls</h2>
+  <span class="import-path"
+    >import { TransportControls } from '@karoly-pfaff/audio-controls-react'</span
+  >
+  <p>
+    A transport group with restart, back, play/pause, stop and forward actions. Connect its
+    callbacks to your existing player.
+  </p>
+  <!-- EXAMPLE:transport-controls -->
+  <h3>Props</h3>
+  <!-- API:TransportControls -->
+  <p>
+    Every prop is required, including the booleans. <code>disabled</code> disables the group;
+    <code>playable</code> determines whether playback can start. <code>playing</code> selects the
+    play or pause action.
+  </p>
+  <p>
+    The host decides jump length, stop semantics and end-of-track behavior. The demo jumps by 10
+    seconds and clamps to a 120-second source. Play changes state only; the example does not advance
+    a clock or emit sound.
+  </p>
+  <p>
+    Shortcut hints in tooltips do not install listeners. Bind any host shortcuts explicitly. Keep
+    the built-in jump callbacks at five seconds to match their accessible labels; use
+    TransportButton for differently named jump actions.
+  </p>
+</section>
+<section id="transport-button">
+  <span class="section-number">08 / AUDIO CONTROLS</span>
+  <h2>TransportButton</h2>
+  <span class="import-path"
+    >import { TransportButton } from '@karoly-pfaff/audio-controls-react'</span
+  >
+  <p>Build a custom transport layout from one accessible action at a time.</p>
+  <!-- EXAMPLE:transport-button -->
+  <h3>Props</h3>
+  <!-- API:TransportButton -->
+  <p>
+    <code>icon</code> is one of <code>restart</code>, <code>back</code>, <code>play</code>,
+    <code>pause</code>, <code>stop</code> or <code>forward</code>. The SVG is decorative; the
+    required <code>label</code> names the button.
+  </p>
+  <p>
+    <code>active</code> is a visual class hook, not an <code>aria-pressed</code> state. Use
+    ToggleButton for a persistent toggle. Keep ordinary transport actions as buttons.
+  </p>
+</section>

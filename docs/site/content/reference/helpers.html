@@ -1,0 +1,193 @@
+<section id="peak-reduction">
+  <span class="section-number">17 / PURE HELPERS</span>
+  <h2>Waveform peak reduction</h2>
+  <span class="import-path"
+    >import { waveformPeaksFromChannels } from '@karoly-pfaff/audio-controls-react'</span
+  >
+  <p>
+    Convert channel sample arrays into visual minimum/maximum columns. This is a display helper,
+    separate from decoding, beat detection and audio analysis.
+  </p>
+  <!-- EXAMPLE:peak-reduction -->
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Prepared peaks from host-owned decoded audio</span
+      ><button type="button" data-copy="code-peaks">Copy</button>
+    </div>
+    <pre><code id="code-peaks">const channels = Array.from(
+  { length: audioBuffer.numberOfChannels },
+  (_, channel) =&gt; audioBuffer.getChannelData(channel),
+);
+const peaks = waveformPeaksFromChannels(channels, {
+  columns: 800,
+  aggregation: 'all-channels',
+});</code></pre>
+  </div>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Contract</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>channels</code></td>
+          <td>
+            Readonly list of Float32Array channels. Supply finite normalized samples and
+            equal-length decoded channels. Inputs are not mutated.
+          </td>
+        </tr>
+        <tr>
+          <td><code>columns</code></td>
+          <td>Integer from 1 to 4096. Invalid resolution throws RangeError.</td>
+        </tr>
+        <tr>
+          <td><code>first-channel</code></td>
+          <td>
+            Uses the first channel with legacy ceil-stride buckets. Preserves Audio Layer Lab's
+            display policy.
+          </td>
+        </tr>
+        <tr>
+          <td><code>all-channels</code></td>
+          <td>
+            Uses proportional buckets and extrema across channels, preserving right-only and
+            anti-phase events. Preserves Audio Signal Lab's display policy.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Extrema are aggregated, not averaged. Opposite-phase channels therefore do not cancel visually.
+    An empty channel list produces zero extrema. Cache the result by audio identity and display
+    resolution instead of reducing samples on each playback tick.
+  </p>
+</section>
+<section id="geometry">
+  <span class="section-number">18 / PURE HELPERS</span>
+  <h2>Timeline geometry helpers</h2>
+  <span class="import-path">import { … } from '@karoly-pfaff/audio-controls-react/timeline'</span>
+  <p>
+    Use these functions when building host-specific lanes while retaining the same source-time
+    geometry as the ready-made controls.
+  </p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Export</th>
+          <th>Behavior &amp; limits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>MAX_TIMELINE_ZOOM</code></td>
+          <td>32. Shared upper zoom bound.</td>
+        </tr>
+        <tr>
+          <td><code>clampTimelineZoom(zoom)</code></td>
+          <td>Clamps finite numbers to 1–32. Throws RangeError for nonfinite values.</td>
+        </tr>
+        <tr>
+          <td><code>timelineTicks(duration, zoom)</code></td>
+          <td>
+            Returns readonly { seconds, percent, label } ticks. Duration must be finite and positive
+            or it throws RangeError.
+          </td>
+        </tr>
+        <tr>
+          <td><code>formatTimelineTime(seconds, fractional)</code></td>
+          <td>
+            Formats clock time; optional centiseconds. Intended for nonnegative source positions.
+          </td>
+        </tr>
+        <tr>
+          <td><code>timelineRegionStyle(region, duration)</code></td>
+          <td>
+            Returns CSS percentage left/width. The host validates region boundaries and positive
+            duration.
+          </td>
+        </tr>
+        <tr>
+          <td><code>isTimelineRegionVisible(region, viewport, duration)</code></td>
+          <td>
+            Tests pixel overlap with a 64px offscreen margin. Does not sort, clip or mutate regions.
+          </td>
+        </tr>
+        <tr>
+          <td><code>waveformColumns(peaks, columns = 512)</code></td>
+          <td>
+            Aggregates extrema into at most the requested number of columns. Resolution must be an
+            integer from 1 to 2048 or it throws Error.
+          </td>
+        </tr>
+        <tr>
+          <td><code>waveformWindow(peaks, viewport)</code></td>
+          <td>
+            Returns offset, length, total and reduced visible columns with 64px overscan.
+            Nonpositive content width selects the full source.
+          </td>
+        </tr>
+        <tr>
+          <td><code>waveformOutline(wave)</code></td>
+          <td>
+            Creates a closed SVG path from a waveformWindow result. No columns produces an empty
+            string.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Source seconds → lane positions</span
+      ><button type="button" data-copy="code-geometry">Copy</button>
+    </div>
+    <pre><code id="code-geometry">import {
+  timelineRegionStyle, isTimelineRegionVisible, formatTimelineTime,
+} from '@karoly-pfaff/audio-controls-react/timeline';
+
+const region = { start: 24, end: 60 };
+const style = timelineRegionStyle(region, 120); // { left: '20%', width: '30%' }
+const label = formatTimelineTime(42.25, true); // '00:42.25'
+const visible = isTimelineRegionVisible(region, {
+  width: 800, scrollLeft: 0, contentWidth: 1600,
+}, 120);</code></pre>
+  </div>
+  <div class="callout">
+    <strong>Display math is not domain validation.</strong>
+    <p>
+      Validate external durations, region arrays and saved documents at your host boundary. Helpers
+      with no stated validation contract should receive already-validated input.
+    </p>
+  </div>
+</section>
+<section id="data-contracts">
+  <span class="section-number">19 / API CONTRACTS</span>
+  <h2>Data contracts</h2>
+  <p>
+    These tables are generated from the current TypeScript definitions, like the component prop
+    tables above. Types marked optional may be omitted; required callbacks still belong to the host.
+  </p>
+  <h3>WaveformPeaks</h3>
+  <p>
+    Exported from both package entries. Minimum/maximum arrays share a uniform source-time axis and
+    equal length. Keep finite, normalized extrema and stable identity.
+  </p>
+  <!-- CONTRACT:WaveformPeaks -->
+  <h3>TimelineRegion</h3>
+  <p>Exported from the timeline entry. The host owns identity, validity and overlap policy.</p>
+  <!-- CONTRACT:TimelineRegion -->
+  <h3>TimelineWindow</h3>
+  <p>Pixel measurements, not seconds or ratios. Supplied by the viewport.</p>
+  <!-- CONTRACT:TimelineWindow -->
+  <h3>TimelineView</h3>
+  <p>The render-callback contract shared between toolbar and content lanes.</p>
+  <!-- CONTRACT:TimelineView -->
+  <h3>StereoLevels</h3>
+  <p>Exported from the root entry. Normalized left and right display levels.</p>
+  <!-- CONTRACT:StereoLevels -->
+</section>

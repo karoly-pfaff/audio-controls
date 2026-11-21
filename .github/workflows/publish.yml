@@ -1,0 +1,68 @@
+name: GitHub Packages candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact package.json version, for example 0.1.0
+        required: true
+        type: string
+      publish:
+        description: Publish the verified tarball (requires the matching vVERSION tag)
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-packages-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: github-packages
+    permissions:
+      contents: read
+      packages: write
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+      PUBLISH_REQUESTED: ${{ inputs.publish }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.18.1
+          cache: npm
+          registry-url: https://npm.pkg.github.com
+          scope: '@karoly-pfaff'
+      - name: Use the recorded npm version
+        run: npm install --global npm@11.16.0 --ignore-scripts
+      - run: npm ci
+      - name: Pack and check the independent React 19 consumer
+        run: npm run package:check
+      - name: Verify release version, target and candidate digest
+        run: npm run release:check
+      - name: Strict serial quality and coverage
+        run: npm run check
+      - name: Build documentation artifact
+        run: npm run docs:build
+      - uses: actions/upload-artifact@v6
+        with:
+          name: audio-controls-react-release-candidate
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            artifacts/karoly-pfaff-audio-controls-react-*.tgz
+            artifacts/package-report.json
+            docs/site/build/index.html
+      - name: Publish the exact verified archive
+        if: ${{ inputs.publish }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run release:publish

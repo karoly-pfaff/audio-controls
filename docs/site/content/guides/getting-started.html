@@ -1,0 +1,176 @@
+<section id="overview" class="hero">
+  <p class="eyebrow">React component library / Documentation</p>
+  <h1>Build your audio interface.<br />Keep your own engine.</h1>
+  <p class="lead">
+    Accessible audio controls and composable source-time timelines for React. Explore the live
+    examples, inspect the props, and copy working component code.
+  </p>
+  <div class="badges">
+    <span class="badge primary">v0.1.0</span><span class="badge">React 18 &amp; 19</span
+    ><span class="badge">TypeScript</span><span class="badge">ESM</span
+    ><span class="badge">Local-first</span>
+  </div>
+  <div class="hero-actions">
+    <a class="action primary" href="#quick-start">Get started →</a
+    ><a class="action" href="#composition">Try the timeline</a>
+  </div>
+  <div class="feature-grid">
+    <div class="feature">
+      <strong>Controlled by your app</strong
+      ><span>Values and actions belong to your host. Keep your audio graph and state model.</span>
+    </div>
+    <div class="feature">
+      <strong>One source-time axis</strong
+      ><span>Compose waveforms, sections and playheads with zoom and horizontal scrolling.</span>
+    </div>
+    <div class="feature">
+      <strong>Small, explicit boundaries</strong
+      ><span>No audio engine, DSP, persistence, global shortcuts or runtime networking.</span>
+    </div>
+  </div>
+  <p class="subtle">
+    Every live preview below uses the actual package components. Open “React source” beneath an
+    example to inspect the exact code. Demo layout classes are documentation-only presentation.
+  </p>
+</section>
+<section id="quick-start">
+  <span class="section-number">01 / GETTING STARTED</span>
+  <h2>Installation &amp; setup</h2>
+  <p>
+    Install the scoped package from GitHub Packages into your React application. Authenticate with a
+    personal access token with read:packages access, including for public packages. Keep the token
+    in your user npm configuration rather than committed project files.
+  </p>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Terminal · your React application</span
+      ><button type="button" data-copy="code-install">Copy</button>
+    </div>
+    <pre><code id="code-install">npm login --scope=@karoly-pfaff --auth-type=legacy --registry=https://npm.pkg.github.com
+npm config set @karoly-pfaff:registry=https://npm.pkg.github.com --location=project
+npm install --save-exact @karoly-pfaff/audio-controls-react@0.1.0</code></pre>
+  </div>
+  <p>
+    The package supports <code>react ^18.3.1 || ^19.0.0</code>. Your host supplies React and its
+    renderer. Use a bundler that understands ESM, package exports and CSS imports.
+  </p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Import path</th>
+          <th>Use it for</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>@karoly-pfaff/audio-controls-react</code></td>
+          <td>Sliders, knobs, toggles, transport, meter, canvas waveform and peak reduction</td>
+        </tr>
+        <tr>
+          <td><code>@karoly-pfaff/audio-controls-react/timeline</code></td>
+          <td>Viewport, ruler, SVG waveform, regions, playhead, zoom and geometry helpers</td>
+        </tr>
+        <tr>
+          <td><code>@karoly-pfaff/audio-controls-react/styles.css</code></td>
+          <td>Base layout, focus treatment and scoped light/dark themes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Minimal controlled React component</span
+      ><button type="button" data-copy="code-quickstart">Copy</button>
+    </div>
+    <pre><code id="code-quickstart">import { useState } from 'react';
+import type { ReactElement } from 'react';
+import { Slider } from '@karoly-pfaff/audio-controls-react';
+import '@karoly-pfaff/audio-controls-react/styles.css';
+
+export function OutputGain(): ReactElement {
+  const [gain, setGain] = useState(0.75);
+  return (
+    &lt;div data-acr-theme="light"&gt;
+      &lt;Slider label="Output gain" value={gain} unit="dB" onChange={setGain} /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  </div>
+  <div class="callout">
+    <strong>Bring your own state.</strong>
+    <p>
+      <code>onChange</code> reports a candidate value. Update the supplied <code>value</code> to
+      reflect it. The package does not create an audio context or change a gain node for you.
+    </p>
+  </div>
+  <p>
+    With an SSR framework, put interactive examples behind its client boundary. Package imports are
+    safe without browser audio globals; canvas painting and viewport measurement happen when mounted
+    in a browser.
+  </p>
+</section>
+<section id="concepts">
+  <span class="section-number">02 / FOUNDATIONS</span>
+  <h2>Controlled values &amp; units</h2>
+  <p>
+    Keep units explicit at the host boundary. The controls do not infer whether a number means
+    seconds, gain or a normalized position.
+  </p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th>Unit / range</th>
+          <th>Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gain slider <code>value</code></td>
+          <td>Linear amplitude; default range 0–1</td>
+          <td><code>unit="dB"</code> formats 20 × log10(value). It still emits linear gain.</td>
+        </tr>
+        <tr>
+          <td>Pan knob <code>value</code></td>
+          <td>−1…1 by default</td>
+          <td>−1 is left, 0 is center, 1 is right. Default unit is <code>L/R</code>.</td>
+        </tr>
+        <tr>
+          <td>Canvas <code>playhead</code> / <code>onSeek</code></td>
+          <td>Position ratio 0–1</td>
+          <td>Convert with <code>seconds = ratio * durationSeconds</code>.</td>
+        </tr>
+        <tr>
+          <td>Timeline positions and regions</td>
+          <td>Source seconds</td>
+          <td>Use the complete source timeline, including when zoomed or scrolled.</td>
+        </tr>
+        <tr>
+          <td>Meter levels</td>
+          <td>Normalized display levels 0–1</td>
+          <td>The host computes them; this is not a dBFS analyzer.</td>
+        </tr>
+        <tr>
+          <td>Timeline zoom</td>
+          <td>1…32 multiplier</td>
+          <td>1 fits the full source. Zoom is independent of audio playback rate.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warning">
+    <strong>Formatting is intentionally narrow.</strong>
+    <p>
+      <code>dB</code> and <code>L/R</code> have special formatting. Other unit strings display a
+      rounded percentage; they are not appended as arbitrary units. Use a native range input and
+      your own label for a seconds scrubber.
+    </p>
+  </div>
+  <p>
+    Waveform peaks are prepared visual extrema, not a decoded track or analyzer result. Keep peak
+    arrays stable between renders to preserve paint caching. The host owns input validation,
+    decoding, playback, subscriptions, persistence and export clocks.
+  </p>
+</section>

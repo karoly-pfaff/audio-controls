@@ -1,0 +1,23 @@
+<section id="timeline-zoom">
+  <span class="section-number">16 / TIMELINE</span>
+  <h2>TimelineZoom</h2>
+  <span class="import-path"
+    >import { TimelineZoom } from '@karoly-pfaff/audio-controls-react/timeline'</span
+  >
+  <p>
+    A compact toolbar with zoom-out, a native range input, zoom-in and “Fit song”. Use the
+    viewport's controlled zoom pair in a full composition.
+  </p>
+  <!-- EXAMPLE:timeline-zoom -->
+  <h3>Props</h3>
+  <!-- API:TimelineZoom -->
+  <p>
+    <code>zoom</code> ranges from 1 to <code>MAX_TIMELINE_ZOOM</code> (32). The range input uses
+    integer steps. Fit resets to 1; the boundary buttons disable at their corresponding limits.
+  </p>
+  <p>
+    The standalone demo shows the toolbar's state only. To scale and anchor actual content, pass
+    <code>view.zoom</code> and <code>view.changeZoom</code> from TimelineViewport. The viewport owns
+    the scrolling mechanics.
+  </p>
+</section>

@@ -1,0 +1,28 @@
+<section id="timeline-ruler">
+  <span class="section-number">12 / TIMELINE</span>
+  <h2>TimelineRuler</h2>
+  <span class="import-path"
+    >import { TimelineRuler } from '@karoly-pfaff/audio-controls-react/timeline'</span
+  >
+  <p>
+    A source-time ruler with deterministic ticks and compact clock labels. As zoom increases, it
+    creates more ticks across the full content width.
+  </p>
+  <!-- EXAMPLE:timeline-ruler -->
+  <h3>Props</h3>
+  <!-- API:TimelineRuler -->
+  <p>
+    <code>duration</code> is positive source seconds; <code>zoom</code> is the multiplier from
+    TimelineViewport. The different prop name is intentional: it is <code>duration</code> here,
+    whereas most other timeline controls use <code>durationSeconds</code>.
+  </p>
+  <p>
+    At zoom 1, the ruler normally divides a source into six intervals. Subsecond intervals include
+    centiseconds. Tick density is bounded by the source duration and the clamped zoom, not an
+    independently chosen BPM or beat grid.
+  </p>
+  <p>
+    For your own ruler rendering, use <a href="#geometry">timelineTicks</a> and retain the same
+    source-time percentage positions.
+  </p>
+</section>

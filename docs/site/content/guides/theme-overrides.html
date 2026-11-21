@@ -1,0 +1,120 @@
+<section id="theme-overrides">
+  <h2>Customize your theme</h2>
+  <h3>1. Override a named palette</h3>
+  <p>
+    Load your stylesheet after the package CSS. Attach the class and theme attribute to the same
+    container. Override semantic tokens instead of copying component selectors.
+  </p>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Brand palette · host stylesheet</span
+      ><button type="button" data-copy="code-theme-brand">Copy</button>
+    </div>
+    <pre><code id="code-theme-brand">.brand-controls[data-acr-theme] {
+  --acr-accent: #0f766e;
+  --acr-on-accent: #ffffff;
+  --acr-focus: #0f766e;
+  --acr-radius: 10px;
+  --acr-gap: 12px;
+}
+
+.brand-controls[data-acr-theme='light'] { --acr-waveform: #0f766e; }
+.brand-controls[data-acr-theme='dark'] {
+  --acr-accent: #5eead4;
+  --acr-on-accent: #042f2e;
+  --acr-focus: #99f6e4;
+  --acr-waveform: #5eead4;
+}</code></pre>
+  </div>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>React container</span
+      ><button type="button" data-copy="code-theme-container">Copy</button>
+    </div>
+    <pre><code id="code-theme-container">&lt;div className="brand-controls" data-acr-theme={theme}&gt;
+  &lt;Slider label="Mix" value={mix} onChange={setMix} /&gt;
+&lt;/div&gt;</code></pre>
+  </div>
+  <h3>2. Change density or one component</h3>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Local sizing overrides</span
+      ><button type="button" data-copy="code-theme-sizing">Copy</button>
+    </div>
+    <pre><code id="code-theme-sizing">.compact-controls[data-acr-theme] {
+  --acr-control-height: 28px;
+  --acr-gap: 4px;
+  --acr-knob-size: 32px;
+  --acr-meter-height: 6px;
+}
+
+/* Same theme, different local control scale. */
+.brand-controls .large-pan { --acr-knob-size: 56px; }
+
+/* Host-specific layout stays in your stylesheet. */
+.brand-controls .acr-stereo-meter .stereo-meter-track { width: 180px; }</code></pre>
+  </div>
+  <p>
+    Pass <code>className="large-pan"</code> to Knob. It appends that class to its base wrapper, so
+    the local token affects only that control. Keep touch targets comfortable and preserve visible
+    focus when changing density.
+  </p>
+  <h3>3. Bridge the canvas color explicitly</h3>
+  <p>
+    <code>--acr-waveform</code> controls the SVG waveform. CanvasWaveform rasterizes its
+    <code>color</code> prop and caches the background; pass a concrete color from your application
+    palette to redraw it when that palette changes. A literal <code>var(--acr-waveform)</code> is
+    not a canvas color value.
+  </p>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Canvas palette adapter</span
+      ><button type="button" data-copy="code-theme-canvas">Copy</button>
+    </div>
+    <pre><code id="code-theme-canvas">const palette = {
+  light: { canvasWaveform: '#a78bfa' },
+  dark: { canvasWaveform: '#b19aee' },
+};
+
+&lt;CanvasWaveform
+  peaks={peaks}
+  color={palette[theme].canvasWaveform}
+  playhead={positionRatio}
+  onSeek={seekRatio}
+/&gt;</code></pre>
+  </div>
+  <p>
+    Use a six-digit hex <code>#RRGGBB</code> waveform color: the renderer appends alpha bytes for
+    its envelope. Keep the peak identity stable; changing <code>color</code> updates the cached
+    paint without decoding audio again. The live comparison's useThemeSettings hook demonstrates
+    typed CSS properties and the matching canvas prop.
+  </p>
+  <h3>4. Keep the positioning contract</h3>
+  <p>
+    Slider and Knob append className to their base classes. Timeline class props replace their
+    defaults. To retain package layout and theme rules, include both names:
+    <code>className="acr-timeline-waveform my-waveform"</code>. Keep the viewport's relative content
+    positioning and horizontal overflow.
+  </p>
+  <p>
+    Legacy Lab hooks remain available. Scope new overrides to your container and the owning
+    <code>acr-</code> class. The package does not theme unrelated native fields; style your host
+    toolbar and form controls explicitly.
+  </p>
+  <h3>5. Follow a system preference in the host</h3>
+  <p>
+    Read <code>matchMedia('(prefers-color-scheme: dark)')</code> in your browser lifecycle if you
+    want a system default, then select light or dark on your container. The host owns preference
+    persistence, change listeners and cleanup. Keep server/client initial markup consistent.
+  </p>
+  <p>
+    Check custom palettes in forced colors and with keyboard focus. The built-in themes use system
+    button/highlight colors in forced-colors mode; they introduce no transition animation or global
+    preference listeners.
+  </p>
+  <p>
+    Native controls and SVG geometry use system colors in this mode. The canvas retains its raster
+    plot colors and dark surface so its existing white position/tick overlays remain visible;
+    provide host-level textual position controls alongside visual waveforms.
+  </p>
+</section>

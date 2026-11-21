@@ -1,0 +1,40 @@
+<section id="composition">
+  <span class="section-number">03 / COMPOSITION</span>
+  <h2>A complete source-time timeline</h2>
+  <p>
+    Start here to see the timeline pieces working together. The viewport shares its zoom, zoom
+    action and measured window with every lane. All seek callbacks update the same position in
+    seconds.
+  </p>
+  <!-- EXAMPLE:composition -->
+  <h3>Composition recipe</h3>
+  <ol>
+    <li>Keep one <code>positionSeconds</code> in the host.</li>
+    <li>Pass duration and position into <code>TimelineViewport</code>.</li>
+    <li>
+      Use its <code>toolbar(view)</code> for <code>TimelineZoom</code> and a keyboard scrubber.
+    </li>
+    <li>Place the ruler, waveform, regions and playhead inside <code>children(view)</code>.</li>
+    <li>
+      Pass the measured <code>view.viewport</code> to the waveform and the same duration to every
+      lane.
+    </li>
+  </ol>
+  <div class="callout">
+    <strong>One axis, even at 32×.</strong>
+    <p>
+      A click on a waveform at 75% of the full content means 90 seconds in a 120-second track. Do
+      not multiply the callback by zoom or add scroll position again.
+    </p>
+  </div>
+  <p>
+    The visible waveform is reduced from prepared peaks with a bounded offscreen margin. Region
+    labels are ordinary buttons. The playhead is a visual layer; the native range input in the
+    toolbar provides a keyboard-operable source-time alternative.
+  </p>
+  <p class="subtle">
+    The example includes multiple source files and a deterministic synthetic fixture. Copy the
+    companion files shown with the example, preserving their relative imports. No music file is
+    required.
+  </p>
+</section>

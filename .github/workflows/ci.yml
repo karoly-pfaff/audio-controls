@@ -1,0 +1,74 @@
+name: Library quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.18.1
+          cache: npm
+      - name: Use the recorded npm version
+        run: npm install --global npm@11.16.0 --ignore-scripts
+      - run: npm ci
+      - name: Pack and check the independent React 19 consumer
+        run: npm run package:check
+      - name: Strict serial quality and coverage
+        run: npm run check
+      - name: Build GitHub Pages documentation
+        run: npm run docs:build
+      - name: Verify the candidate without publishing
+        run: npm run release:check
+      - uses: actions/upload-artifact@v6
+        with:
+          name: audio-controls-react-candidate
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            artifacts/karoly-pfaff-audio-controls-react-*.tgz
+            artifacts/package-report.json
+            docs/site/build/index.html
+      - name: Upload the verified documentation to GitHub Pages
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/site/build
+
+  pages:
+    name: Publish documentation
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

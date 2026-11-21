@@ -1,0 +1,41 @@
+<section id="timeline-waveform">
+  <span class="section-number">13 / TIMELINE</span>
+  <h2>TimelineWaveform</h2>
+  <span class="import-path"
+    >import { TimelineWaveform } from '@karoly-pfaff/audio-controls-react/timeline'</span
+  >
+  <p>
+    An SVG envelope of prepared minimum/maximum peaks. It reduces the visible source window while
+    preserving the full-song coordinate system.
+  </p>
+  <!-- EXAMPLE:timeline-waveform -->
+  <h3>Props</h3>
+  <!-- API:TimelineWaveform -->
+  <ul>
+    <li>
+      <code>onSeek(seconds)</code> reports source seconds, including when the waveform is zoomed and
+      scrolled.
+    </li>
+    <li>
+      Use the actual <code>view.viewport</code> in a viewport composition. The fixed pixel window in
+      this standalone example is only for its unzoomed full-source display.
+    </li>
+    <li>
+      Empty peaks show an explicit “Waveform unavailable” status. The component never invents audio
+      data.
+    </li>
+    <li>
+      The SVG has <code>role="img"</code>. Pointer seeking is an enhancement; a host-owned range
+      input provides a keyboard alternative.
+    </li>
+    <li>
+      Color comes from <code>--acr-waveform</code>, then <code>--studio-muted</code>, then
+      <code>currentColor</code>. A custom class replaces <code>acr-timeline-waveform</code>.
+    </li>
+  </ul>
+  <p>
+    Peaks must have equal-length arrays of finite extrema on a uniform time axis. Validate persisted
+    or external peaks before passing them into the component. It does not decode, analyze or
+    resample an audio file.
+  </p>
+</section>

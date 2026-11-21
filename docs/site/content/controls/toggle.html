@@ -1,0 +1,26 @@
+<section id="toggle-button">
+  <span class="section-number">06 / AUDIO CONTROLS</span>
+  <h2>ToggleButton</h2>
+  <span class="import-path">import { ToggleButton } from '@karoly-pfaff/audio-controls-react'</span>
+  <p>
+    A native button with a controlled pressed state. Use the variant class to express mute, solo or
+    loop intent without coupling it to your audio model.
+  </p>
+  <!-- EXAMPLE:toggle-button -->
+  <h3>Props</h3>
+  <!-- API:ToggleButton -->
+  <p>
+    <code>onClick</code> takes no arguments. Flip the appropriate host value yourself; the button
+    does not infer mute/solo dependencies. <code>active</code> drives <code>aria-pressed</code> and
+    the active class.
+  </p>
+  <p>
+    <code>label</code> accepts React content. Give icon-only labels an <code>ariaLabel</code>. The
+    optional <code>title</code> is supplemental text, not a substitute for an accessible name.
+  </p>
+  <p>
+    Variants are <code>default</code>, <code>mute</code>, <code>solo</code> and <code>loop</code>.
+    Their names supply class hooks; the optional base stylesheet deliberately leaves semantic color
+    choices to the host theme.
+  </p>
+</section>

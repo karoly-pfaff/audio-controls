@@ -1,0 +1,135 @@
+.code-panel {
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 14px;
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.code-header button {
+  font-size: 11px;
+  padding: 3px 9px;
+  background: var(--page);
+  color: var(--muted);
+}
+details.example-source {
+  border-top: 1px solid var(--border);
+}
+details.example-source summary {
+  cursor: pointer;
+  padding: 10px 16px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 12px;
+}
+details.example-source .code-panel {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+}
+.callout {
+  border-left: 3px solid #9c83ef;
+  background: var(--tint);
+  padding: 15px 18px;
+  margin: 20px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+}
+.callout strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+.callout.warning {
+  border-left-color: #d6972a;
+  background: color-mix(in srgb, #eebf5b 12%, var(--page));
+}
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin: 16px 0 22px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 11px;
+  padding: 10px 12px;
+  background: var(--surface);
+  white-space: nowrap;
+}
+td {
+  border-top: 1px solid var(--border);
+  padding: 11px 12px;
+  vertical-align: top;
+}
+.api-table td:nth-child(2) {
+  min-width: 180px;
+  max-width: 440px;
+  overflow-wrap: anywhere;
+}
+.api-table td code {
+  background: transparent;
+  padding: 0;
+  white-space: normal;
+}
+.required {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.optional {
+  color: var(--muted);
+  font-size: 10px;
+}
+.recipe-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  margin-top: 17px;
+}
+.recipe-links a {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  text-decoration: none;
+}
+kbd {
+  font-family: inherit;
+  font-size: 11px;
+  border: 1px solid var(--border);
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: var(--surface);
+  white-space: nowrap;
+}
+li {
+  margin-bottom: 7px;
+}
+.signature {
+  display: block;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+.subtle {
+  color: var(--muted);
+  font-size: 12px;
+}

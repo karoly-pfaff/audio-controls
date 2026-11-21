@@ -1,0 +1,75 @@
+<section id="styling">
+  <span class="section-number">20 / CUSTOMIZATION</span>
+  <h2>Light &amp; dark themes</h2>
+  <p>
+    Import the package stylesheet once and select a built-in theme on a container. The theme covers
+    labels, knobs, buttons, focus rings, meters and timeline lanes. Controls inherit the nearest
+    theme's tokens.
+  </p>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Choose a theme per container</span
+      ><button type="button" data-copy="code-theme-setup">Copy</button>
+    </div>
+    <pre><code id="code-theme-setup">import '@karoly-pfaff/audio-controls-react/styles.css';
+
+&lt;div data-acr-theme="light"&gt;{/* your audio controls */}&lt;/div&gt;
+&lt;div data-acr-theme="dark"&gt;{/* another independent group */}&lt;/div&gt;</code></pre>
+  </div>
+  <p>
+    Use the controls below to compare both palettes and customize their accent and corner radius
+    independently. Each card uses the shipped stylesheet; its settings update CSS custom properties
+    on that card.
+  </p>
+  <!-- EXAMPLE:themes -->
+  <h3>Switch themes in React</h3>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Controlled theme selection</span
+      ><button type="button" data-copy="code-theme-react">Copy</button>
+    </div>
+    <pre><code id="code-theme-react">import { useState } from 'react';
+import type { ReactElement } from 'react';
+import { Slider } from '@karoly-pfaff/audio-controls-react';
+import '@karoly-pfaff/audio-controls-react/styles.css';
+
+export function ThemedGain(): ReactElement {
+  const [theme, setTheme] = useState&lt;'light' | 'dark'&gt;('light');
+  const [gain, setGain] = useState(0.75);
+  return (
+    &lt;div data-acr-theme={theme}&gt;
+      &lt;button type="button" onClick={() =&gt; setTheme(theme === 'light' ? 'dark' : 'light')}&gt;
+        Switch theme
+      &lt;/button&gt;
+      &lt;Slider label="Gain" value={gain} onChange={setGain} unit="dB" /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+  </div>
+  <p>
+    The host owns selection, persistence and any system-preference listener. For SSR, choose a
+    deterministic initial theme and synchronize your saved preference on the client. This stylesheet
+    does not read storage or install listeners.
+  </p>
+  <h3>Scope and nesting</h3>
+  <p>
+    Themes are selected with <code>data-acr-theme="light"</code> or <code>"dark"</code>; put the
+    attribute on an ancestor of the controls. A nested theme container starts its own palette and
+    sizing defaults. Add custom overrides to that same container when you want them to survive the
+    reset.
+  </p>
+  <p>
+    The package styles do not reset the body or unconnected form fields. Add layout, padding and
+    styles for your application's own buttons separately. Controls outside a theme container retain
+    the base stylesheet behavior and host styling hooks.
+  </p>
+  <p class="subtle">
+    The top-bar theme button switches the documentation shell and ordinary live previews. The two
+    comparison cards above remain independently scoped, including when their parent preview changes
+    theme.
+  </p>
+  <div class="recipe-links">
+    <a href="#theme-tokens">All theme tokens →</a
+    ><a href="#theme-overrides">Customization recipes →</a>
+  </div>
+</section>

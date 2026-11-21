@@ -1,0 +1,27 @@
+<section id="timeline-playhead">
+  <span class="section-number">15 / TIMELINE</span>
+  <h2>TimelinePlayhead</h2>
+  <span class="import-path"
+    >import { TimelinePlayhead } from '@karoly-pfaff/audio-controls-react/timeline'</span
+  >
+  <p>
+    A controlled vertical position indicator. It maps source seconds to a percentage of the full
+    timeline surface.
+  </p>
+  <!-- EXAMPLE:timeline-playhead -->
+  <h3>Props</h3>
+  <!-- API:TimelinePlayhead -->
+  <p>
+    The visual position is clamped to 0–100%. With nonpositive duration, it stays at the start. This
+    visual guard does not validate the host's full timeline model.
+  </p>
+  <p>
+    Its parent must be positioned, usually TimelineViewport's content element. Base CSS places the
+    line below the 24px ruler and extends it to the bottom of the lane stack.
+  </p>
+  <p>
+    The playhead is <code>aria-hidden</code> and ignores pointer events. It does not advance itself,
+    request frames, seek the audio or scroll the viewport. Supply your playback position or
+    deterministic export time from the host.
+  </p>
+</section>

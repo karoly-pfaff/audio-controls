@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "sources",
+    "outDir": "build",
+    "declaration": true,
+    "noEmit": false
+  },
+  "exclude": ["sources/**/*.test.ts", "sources/**/*.test.tsx"],
+  "include": ["sources"]
+}

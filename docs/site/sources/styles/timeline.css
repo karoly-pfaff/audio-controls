@@ -1,0 +1,67 @@
+.demo .acr-timeline-ruler {
+  margin-top: 10px;
+}
+.demo .acr-timeline-waveform {
+  height: 68px;
+  cursor: crosshair;
+}
+.demo .acr-timeline-regions {
+  margin-top: 5px;
+}
+.demo .acr-timeline-regions button {
+  font-size: 11px;
+}
+.demo .acr-timeline-scroll {
+  padding-bottom: 8px;
+}
+.demo .acr-timeline-zoom {
+  font-size: 11px;
+}
+.demo .acr-timeline-zoom label {
+  font-size: 11px;
+}
+.demo .acr-timeline-zoom input {
+  min-width: 80px;
+  max-width: 150px;
+}
+.demo .track-title {
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: var(--acr-muted);
+}
+.demo .demo-row output {
+  margin-left: auto;
+}
+.demo canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.demo .playhead-stage {
+  position: relative;
+}
+.viewport-guide {
+  min-height: 70px;
+  padding: 20px 12px;
+  color: var(--acr-muted);
+  font-size: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--acr-border) 0,
+    var(--acr-border) 1px,
+    transparent 1px,
+    transparent 10%
+  );
+}
+.demo .acr-stereo-meter .stereo-meter-track {
+  width: 170px;
+}
+.demo .acr-stereo-meter .stereo-meter-row {
+  font-size: 9px;
+  margin: 5px 0;
+}
+.demo :focus-visible {
+  outline: 2px solid var(--acr-focus);
+  outline-offset: 3px;
+}

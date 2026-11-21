@@ -1,0 +1,31 @@
+<section id="stereo-meter">
+  <span class="section-number">09 / AUDIO CONTROLS</span>
+  <h2>StereoMeter</h2>
+  <span class="import-path">import { StereoMeter } from '@karoly-pfaff/audio-controls-react'</span>
+  <p>
+    A two-row display of normalized left/right levels with attack and decay smoothing. It reads your
+    callback on animation frames and updates its bars without rerendering the application for every
+    sample.
+  </p>
+  <!-- EXAMPLE:stereo-meter -->
+  <h3>Props</h3>
+  <!-- API:StereoMeter -->
+  <p>
+    <code>readLevels()</code> returns <code>{ left, right }</code> with finite display levels
+    between 0 and 1. The meter clamps finite levels to this range. It performs no RMS, FFT or peak
+    detection.
+  </p>
+  <p>
+    When playback stops, return zero levels so the display can decay and stop requesting frames.
+    Keep the callback identity stable with <code>useCallback</code> where appropriate. The meter
+    cancels its own frame callback when unmounted or rebound.
+  </p>
+  <div class="callout">
+    <strong>Provide a textual alternative when needed.</strong>
+    <p>
+      The rapidly changing bars are <code>aria-hidden</code>. If level information is essential,
+      provide a separate restrained textual summary in your host instead of announcing every
+      animation frame.
+    </p>
+  </div>
+</section>

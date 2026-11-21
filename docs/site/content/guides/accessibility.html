@@ -1,0 +1,76 @@
+<section id="accessibility">
+  <span class="section-number">21 / ACCESSIBILITY</span>
+  <h2>Keyboard &amp; accessible integration</h2>
+  <p>
+    Native controls supply their browser semantics. Add descriptive names and a host-level keyboard
+    path wherever the visual view is not an interactive control.
+  </p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Keyboard behavior</th>
+          <th>Host responsibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Slider</td>
+          <td>Native range input arrows and range navigation</td>
+          <td>Unique label, valid bounds and meaningful unit</td>
+        </tr>
+        <tr>
+          <td>Knob</td>
+          <td>Arrows step; Home/End select bounds; disabled leaves tab order</td>
+          <td>Descriptive accessibleLabel when needed</td>
+        </tr>
+        <tr>
+          <td>Toggle / transport</td>
+          <td>Native buttons activate with Enter/Space</td>
+          <td>Names for icon-only actions; correct controlled state</td>
+        </tr>
+        <tr>
+          <td>CanvasWaveform</td>
+          <td>Interactive slider: arrows adjust 1%; Home/End seek to bounds</td>
+          <td>Ratio state; preserve a keyboard path with custom handlers</td>
+        </tr>
+        <tr>
+          <td>TimelineViewport</td>
+          <td>Focusable scroll container; browser scrolling</td>
+          <td>Meaningful viewport label and visible focus</td>
+        </tr>
+        <tr>
+          <td>TimelineWaveform</td>
+          <td>SVG image, no built-in keyboard seeking</td>
+          <td>Separate source-time range input, as in the examples</td>
+        </tr>
+        <tr>
+          <td>TimelineRegionLane</td>
+          <td>Native region buttons seek to the region start</td>
+          <td>Concise readable labels</td>
+        </tr>
+        <tr>
+          <td>TimelineZoom</td>
+          <td>Native buttons/range; disabled at limits</td>
+          <td>Same zoom state as the viewport</td>
+        </tr>
+        <tr>
+          <td>Playhead / meter</td>
+          <td>Visual and aria-hidden</td>
+          <td>Alternative textual information when needed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Retain visible focus when replacing styles. Test your theme in forced colors, with zoomed text
+    and at narrow widths. Do not convey mute/solo state solely through color; ToggleButton exposes
+    <code>aria-pressed</code>.
+  </p>
+  <p>
+    The library installs no global shortcuts. Scope additional shortcuts to your application and
+    avoid intercepting typing or unrelated controls. Stop demo/host animations when no longer needed
+    and honor reduced motion in host-owned animation.
+  </p>
+</section>

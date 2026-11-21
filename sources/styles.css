@@ -1,0 +1,122 @@
+@import './themes/palettes.css';
+@import './themes/buttons.css';
+@import './themes/inputs.css';
+@import './themes/timeline.css';
+
+.acr-slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.acr-slider-group .slider-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.acr-slider-group .slider {
+  width: 100%;
+  min-height: 24px;
+  accent-color: var(--acr-accent, #8ba8ee);
+}
+.acr-toggle,
+.acr-transport-button,
+.acr-timeline-zoom button {
+  min-width: 24px;
+  min-height: 24px;
+}
+.acr-knob-group .knob {
+  touch-action: none;
+  cursor: ns-resize;
+}
+.acr-knob-group .knob-value-text {
+  font-size: 7px;
+  fill: var(--acr-text, #f1f5f9);
+}
+.acr-transport .transport-buttons {
+  display: flex;
+  gap: 4px;
+}
+.acr-stereo-meter .stereo-meter-track {
+  width: 128px;
+  height: 6px;
+  background: var(--acr-border, #64748b);
+}
+.acr-stereo-meter .stereo-meter-bar {
+  width: 0;
+  height: 100%;
+  background: var(--acr-accent, #8ba8ee);
+}
+.acr-stereo-meter .stereo-meter-row {
+  display: flex;
+  gap: 4px;
+}
+.acr-timeline-scroll {
+  overflow-x: auto;
+}
+.acr-timeline-content {
+  position: relative;
+  min-width: 100%;
+  overflow: hidden;
+}
+.acr-timeline-ruler {
+  position: relative;
+  height: 24px;
+}
+.acr-timeline-ruler span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.acr-timeline-ruler span:first-child {
+  transform: none;
+}
+.acr-timeline-ruler span:last-child {
+  transform: translateX(-100%);
+}
+.acr-timeline-waveform {
+  display: block;
+  width: 100%;
+  height: 48px;
+}
+.acr-timeline-regions {
+  position: relative;
+  height: 26px;
+}
+.acr-timeline-regions button {
+  position: absolute;
+  height: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.acr-timeline-playhead {
+  position: absolute;
+  top: 24px;
+  bottom: 0;
+  width: 1px;
+  pointer-events: none;
+  background: var(--acr-accent, #8ba8ee);
+}
+.acr-timeline-zoom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.acr-slider-group input:focus-visible,
+.acr-knob-group .knob:focus-visible,
+.acr-toggle:focus-visible,
+.acr-transport-button:focus-visible,
+.acr-timeline-scroll:focus-visible,
+.acr-timeline-zoom :focus-visible {
+  outline: 2px solid var(--acr-focus, var(--acr-accent, #8ba8ee));
+  outline-offset: 2px;
+}
+@media (forced-colors: active) {
+  .acr-timeline-waveform,
+  .acr-knob-group .knob {
+    color: CanvasText;
+  }
+  .acr-timeline-playhead {
+    background: Highlight;
+  }
+}

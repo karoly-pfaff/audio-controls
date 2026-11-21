@@ -1,0 +1,38 @@
+<section id="timeline-viewport">
+  <span class="section-number">11 / TIMELINE</span>
+  <h2>TimelineViewport</h2>
+  <span class="import-path"
+    >import { TimelineViewport } from '@karoly-pfaff/audio-controls-react/timeline'</span
+  >
+  <p>
+    The scrolling and measurement owner for a complete timeline. Render callbacks receive a single
+    <code>TimelineView</code> shared by the toolbar and the full-width content surface.
+  </p>
+  <!-- EXAMPLE:timeline-viewport -->
+  <h3>Props</h3>
+  <!-- API:TimelineViewport -->
+  <p>
+    <code>view.zoom</code> is the current multiplier; <code>view.changeZoom</code> updates it;
+    <code>view.viewport</code> contains measured pixel widths and horizontal scroll offset. Pass
+    that window directly to TimelineWaveform.
+  </p>
+  <p>
+    Changing zoom anchors the current source position within the view where possible. The viewport
+    does not play audio or automatically follow a moving playhead. Host playback state and any
+    follow policy remain separate.
+  </p>
+  <p>
+    The scroll container is keyboard-focusable and resize-aware. The base stylesheet establishes
+    horizontal overflow and relative content positioning. Custom <code>scrollClassName</code> and
+    <code>contentClassName</code> replace the defaults; keep equivalent positioning/overflow rules
+    or include the original class in your value.
+  </p>
+  <div class="callout warning">
+    <strong>Keep empty states outside the timeline.</strong>
+    <p>
+      Use a finite, positive source duration when rendering a ruler. Until audio metadata is ready,
+      show a loading or unavailable state instead of passing zero duration through the full
+      composition.
+    </p>
+  </div>
+</section>

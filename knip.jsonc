@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/knip/schema-jsonc.json",
+  "workspaces": {
+    ".": {
+      "entry": [
+        "sources/index.ts",
+        "sources/timeline/index.ts",
+        "scripts/**/*.test.mjs",
+        "docs/site/sources/main.tsx",
+      ],
+      "project": [
+        "sources/**/*.{ts,tsx}",
+        "scripts/**/*.mjs",
+        "tests/**/*.{ts,tsx}",
+        "*.config.{ts,mjs}",
+        "docs/site/sources/**/*.{ts,tsx}",
+      ],
+    },
+    "tests/integration/react19-consumer": {
+      "entry": ["consumer.tsx"],
+      "project": ["*.{ts,tsx,mjs}"],
+    },
+  },
+}

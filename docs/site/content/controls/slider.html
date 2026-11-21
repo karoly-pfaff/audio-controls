@@ -1,0 +1,38 @@
+<section id="slider">
+  <span class="section-number">04 / AUDIO CONTROLS</span>
+  <h2>Slider</h2>
+  <span class="import-path">import { Slider } from '@karoly-pfaff/audio-controls-react'</span>
+  <p>
+    A labeled native range input with controlled numeric values and a formatted readout. Use it for
+    linear gain, normalized mix values or explicit pan ranges.
+  </p>
+  <!-- EXAMPLE:slider -->
+  <h3>Props</h3>
+  <!-- API:Slider -->
+  <h3>Behavior &amp; integration</h3>
+  <ul>
+    <li>
+      Defaults: <code>min=0</code>, <code>max=1</code>, <code>step=0.01</code>. Supply a matching
+      finite value within your range.
+    </li>
+    <li>
+      <code>onChange</code> receives a number, never a DOM event. Update the host state and audio
+      parameter there.
+    </li>
+    <li>
+      <code>unit="dB"</code> expects linear gain; 1 displays 0.0 dB and 0 displays −∞. Negative
+      linear gain is not a valid input for this display mode.
+    </li>
+    <li>
+      <code>showLabel={false}</code> hides only the visible label text. The formatted value and
+      accessible name remain.
+    </li>
+    <li>
+      Set <code>accessibleLabel</code> when multiple controls would otherwise have the same name.
+    </li>
+  </ul>
+  <p>
+    The first two sliders in this example share one value to demonstrate the difference between a
+    linear value and its display formatting. The third demonstrates the disabled state.
+  </p>
+</section>

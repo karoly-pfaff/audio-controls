@@ -1,0 +1,29 @@
+<section id="timeline-region-lane">
+  <span class="section-number">14 / TIMELINE</span>
+  <h2>TimelineRegionLane</h2>
+  <span class="import-path"
+    >import { TimelineRegionLane } from '@karoly-pfaff/audio-controls-react/timeline'</span
+  >
+  <p>
+    A lane of native buttons placed at source-time regions. Use it for song sections, annotated
+    spans or lightweight chapter navigation.
+  </p>
+  <!-- EXAMPLE:timeline-region-lane -->
+  <h3>Props</h3>
+  <!-- API:TimelineRegionLane -->
+  <p>
+    A region has a stable <code>id</code>, source-second <code>start</code> and <code>end</code>, a
+    visible <code>label</code> and optional <code>title</code>. Clicking or keyboard-activating a
+    button calls <code>onSeek(region.start)</code>.
+  </p>
+  <p>
+    The host validates <code>0 ≤ start &lt; end ≤ durationSeconds</code>, ordering, overlap policy
+    and stable identity. This view does not resize or reorder regions, manage selection or validate
+    a saved project schema.
+  </p>
+  <p>
+    Regions use percentage positioning across the full source. Place them inside the same
+    TimelineViewport content as the waveform and ruler. Long labels are clipped by the base styles;
+    provide concise names and supplemental titles when appropriate.
+  </p>
+</section>

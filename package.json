@@ -1,0 +1,101 @@
+{
+  "name": "@karoly-pfaff/audio-controls-react",
+  "version": "0.1.0",
+  "description": "Accessible controlled audio controls and source-time timelines for React.",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/index.js"
+    },
+    "./timeline": {
+      "types": "./build/timeline/index.d.ts",
+      "import": "./build/timeline/index.js"
+    },
+    "./styles.css": "./build/styles.css"
+  },
+  "scripts": {
+    "build": "node scripts/clean-build.mjs && tsc -p tsconfig.build.json && node scripts/copy-styles.mjs",
+    "typecheck": "tsc --noEmit && tsc -p docs/site/tsconfig.json && tsc -p tests/integration/react19-consumer/tsconfig.json",
+    "test": "vitest run --maxWorkers=1 --no-file-parallelism",
+    "test:coverage": "npm test -- --coverage",
+    "lint": "npm run lint:code && npm run lint:duplicates && npm run lint:dead-code && npm run lint:layout",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "prepack": "npm run build",
+    "lint:code": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix --max-warnings 0",
+    "lint:duplicates": "jscpd --config jscpd.json --no-colors --no-tips",
+    "lint:dead-code": "knip --no-progress --treat-config-hints-as-errors --treat-tag-hints-as-errors",
+    "lint:layout": "node scripts/quality/check-control-layout.mjs",
+    "test:tooling": "node --test --test-concurrency=1 \"scripts/**/*.test.mjs\"",
+    "check": "npm run build && npm run format:check && npm run lint && npm run typecheck && npm run test:tooling && npm run test:coverage",
+    "docs:build": "npm run build && tsc -p docs/site/tsconfig.json && node scripts/documentation/build-documentation.mjs",
+    "package:check": "npm run build && node scripts/release/pack-candidate.mjs && node scripts/release/check-consumer.mjs",
+    "release:check": "node scripts/release/check-release.mjs",
+    "release:publish": "node scripts/release/publish-candidate.mjs",
+    "prepublishOnly": "node scripts/release/check-publish-context.mjs"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@types/node": "24.19.2",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@vitest/coverage-v8": "5.0.3",
+    "eslint": "10.12.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-sonarjs": "4.2.0",
+    "globals": "17.9.0",
+    "jscpd": "5.0.14",
+    "jsdom": "24.1.0",
+    "knip": "6.31.0",
+    "prettier": "3.9.9",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.0",
+    "vite": "8.3.8",
+    "vitest": "5.0.3"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "npm@11.16.0",
+  "author": "Károly Pfaff",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karoly-pfaff/audio-controls-react.git"
+  },
+  "homepage": "https://karoly-pfaff.github.io/audio-controls-react/",
+  "bugs": {
+    "url": "https://github.com/karoly-pfaff/audio-controls-react/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "types": "./build/index.d.ts",
+  "keywords": [
+    "react",
+    "audio",
+    "controls",
+    "waveform",
+    "timeline",
+    "typescript"
+  ]
+}

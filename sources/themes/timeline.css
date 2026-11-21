@@ -1,0 +1,86 @@
+[data-acr-theme] .acr-timeline-scroll {
+  border: 1px solid var(--acr-border);
+  border-radius: var(--acr-radius);
+}
+
+[data-acr-theme] .acr-timeline-content {
+  background: var(--acr-surface);
+}
+
+[data-acr-theme] .acr-timeline-ruler {
+  color: var(--acr-muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-acr-theme] .acr-timeline-waveform {
+  background: var(--acr-surface-raised);
+}
+
+[data-acr-theme] .acr-timeline-regions {
+  height: var(--acr-control-height);
+}
+
+[data-acr-theme] .acr-timeline-regions button {
+  border-radius: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+[data-acr-theme] .acr-timeline-zoom {
+  gap: var(--acr-gap);
+  color: var(--acr-text);
+}
+
+[data-acr-theme] .acr-timeline-zoom input {
+  accent-color: var(--acr-accent);
+}
+
+[data-acr-theme] .acr-timeline-regions button:focus-visible,
+[data-acr-theme] .acr-waveform:focus-visible {
+  outline: 2px solid var(--acr-focus);
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  [data-acr-theme] .acr-toggle,
+  [data-acr-theme] .acr-transport-button,
+  [data-acr-theme] .acr-timeline-zoom button,
+  [data-acr-theme] .acr-timeline-regions button {
+    forced-color-adjust: none;
+    border-color: ButtonText;
+    background: ButtonFace;
+    color: ButtonText;
+  }
+  [data-acr-theme] .acr-toggle.toggle-btn--active,
+  [data-acr-theme] .acr-toggle.toggle-btn--mute.toggle-btn--active,
+  [data-acr-theme] .acr-toggle.toggle-btn--solo.toggle-btn--active,
+  [data-acr-theme] .acr-transport-button.transport-btn--active {
+    background: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+  [data-acr-theme] .acr-knob-group .knob path {
+    stroke: CanvasText;
+  }
+  [data-acr-theme] .acr-knob-group .knob circle,
+  [data-acr-theme] .acr-knob-group .knob-value-text,
+  [data-acr-theme] .acr-timeline-waveform path {
+    fill: CanvasText;
+  }
+  [data-acr-theme] .acr-waveform {
+    forced-color-adjust: none;
+  }
+  [data-acr-theme] .acr-waveform:focus-visible {
+    outline-color: Highlight;
+  }
+  [data-acr-theme] .acr-stereo-meter .stereo-meter-track {
+    border: 1px solid CanvasText;
+    background: Canvas;
+  }
+  [data-acr-theme] .acr-stereo-meter .stereo-meter-bar,
+  [data-acr-theme] .acr-timeline-playhead {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+}

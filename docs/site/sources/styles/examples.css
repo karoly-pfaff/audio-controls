@@ -1,0 +1,88 @@
+.example {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 22px 0;
+}
+.example-label {
+  padding: 9px 16px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #169c83;
+  border-radius: 50%;
+}
+.demo {
+  padding: 26px;
+  font-size: 13px;
+}
+.demo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.demo label {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+.demo label input[type='range'] {
+  flex: 1;
+  min-width: 100px;
+  accent-color: var(--acr-accent);
+}
+.demo button:not([class]),
+.demo select {
+  color: var(--acr-text);
+  background: var(--acr-surface-raised);
+  border: 1px solid var(--acr-border);
+  border-radius: var(--acr-radius);
+  padding: 5px 9px;
+}
+.demo output {
+  color: var(--acr-muted);
+  font-size: 12px;
+  font-family: ui-monospace, monospace;
+}
+.demo small {
+  color: var(--acr-muted);
+  font-size: 11px;
+}
+.demo .acr-slider-group {
+  max-width: 500px;
+}
+.demo .acr-slider-group .slider-label {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.demo .acr-slider-group .slider-value {
+  font-family: ui-monospace, monospace;
+}
+.demo .acr-toggle {
+  text-transform: capitalize;
+}
+.demo .acr-transport-button {
+  min-width: var(--acr-control-height);
+}

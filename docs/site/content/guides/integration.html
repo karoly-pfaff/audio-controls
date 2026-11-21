@@ -1,0 +1,172 @@
+<section id="integration">
+  <span class="section-number">22 / RECIPES</span>
+  <h2>Integration recipes</h2>
+  <h3>Connect a gain parameter</h3>
+  <p>
+    Keep the audio engine outside React controls. Create your AudioContext after a user gesture
+    according to your application lifecycle, then pass a typed action to Slider.
+  </p>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Host action · linear gain</span
+      ><button type="button" data-copy="code-gain">Copy</button>
+    </div>
+    <pre><code id="code-gain">function changeGain(nextGain: number): void {
+  setGain(nextGain);
+  gainNode.gain.setTargetAtTime(nextGain, audioContext.currentTime, 0.01);
+}
+
+// gainNode, audioContext and setGain are owned by the host.
+// Pass value={gain}, unit="dB" and onChange={changeGain} to Slider.</code></pre>
+  </div>
+  <h3>Bridge canvas ratios and player seconds</h3>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Host seek adapter · durationSeconds must be positive</span
+      ><button type="button" data-copy="code-seek">Copy</button>
+    </div>
+    <pre><code id="code-seek">const playheadRatio = positionSeconds / durationSeconds;
+function seekRatio(ratio: number): void {
+  player.seek(ratio * durationSeconds);
+}
+
+// CanvasWaveform: playhead={playheadRatio}, onSeek={seekRatio}
+// TimelineWaveform: onSeek={(seconds) =&gt; player.seek(seconds)}</code></pre>
+  </div>
+  <h3>Integrate a project timeline</h3>
+  <p>
+    Translate your project model into generic regions and prepared peaks at the host boundary. Keep
+    scene cards, selection, thumbnails, editing commands and persistence in the application.
+  </p>
+  <h3>Keep preview and export in sync</h3>
+  <p>
+    Controls display source time; they do not own an export scheduler. During export, derive time
+    from frame index and frame rate in your renderer. Do not accumulate animation-loop deltas or use
+    documentation meter time as a source clock.
+  </p>
+  <h3>Server rendering</h3>
+  <p>
+    Importing the package requires no Web Audio globals. Render static controls or initial markup on
+    the server, then mount interactive components on the client. ResizeObserver, canvas contexts and
+    animation frames belong to the browser lifecycle.
+  </p>
+  <div class="callout">
+    <strong>Source imports are not the integration contract.</strong>
+    <p>
+      Install the tarball or a deliberately versioned package. Import documented entries rather than
+      sibling sources, internal build paths or private hooks.
+    </p>
+  </div>
+</section>
+<section id="troubleshooting">
+  <span class="section-number">23 / SUPPORT</span>
+  <h2>Troubleshooting</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Symptom</th>
+          <th>Check</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The slider snaps back</td>
+          <td>
+            Update its controlled value in onChange. A callback alone does not change the next
+            rendered value.
+          </td>
+        </tr>
+        <tr>
+          <td>Gain displays NaN</td>
+          <td>dB formatting expects nonnegative linear gain, not already-converted decibels.</td>
+        </tr>
+        <tr>
+          <td>Timeline lanes stack incorrectly</td>
+          <td>
+            Import base CSS or preserve relative positioning, lane heights and horizontal overflow
+            in custom classes.
+          </td>
+        </tr>
+        <tr>
+          <td>Seek jumps after zooming</td>
+          <td>
+            Timeline callbacks already report full-source seconds. Do not reapply scroll offset or
+            zoom. Canvas reports a ratio instead.
+          </td>
+        </tr>
+        <tr>
+          <td>Waveform is empty or incorrect</td>
+          <td>
+            Validate equal-length finite peak arrays. Empty SVG peaks intentionally show
+            unavailable. For right-only content, use all-channels aggregation.
+          </td>
+        </tr>
+        <tr>
+          <td>Waveform repaint is expensive</td>
+          <td>
+            Keep peak identity stable; reduce once per decoded track/resolution rather than on each
+            playhead update.
+          </td>
+        </tr>
+        <tr>
+          <td>Meter keeps animating while paused</td>
+          <td>
+            Return zero levels when stopped; playing=false allows the smoothing tail to decay but
+            does not silence a nonzero callback.
+          </td>
+        </tr>
+        <tr>
+          <td>Copy is unavailable from a local file</td>
+          <td>
+            The button selects code as a fallback; press Ctrl/Cmd+C. Browser clipboard permissions
+            vary by origin.
+          </td>
+        </tr>
+        <tr>
+          <td>An old local package is still installed</td>
+          <td>
+            Rebuild/repack, replace the local artifact and deliberately refresh the consumer
+            lockfile/install. Do not overwrite a published version.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<section id="contributing">
+  <span class="section-number">24 / DEVELOPMENT</span>
+  <h2>Development &amp; quality</h2>
+  <p>
+    Use Node 24 and npm 11. The repository has strict typed ESLint, SonarJS, component/effect
+    boundaries, Knip, zero-duplication jscpd and a separate directory for each control.
+  </p>
+  <div class="code-panel">
+    <div class="code-header">
+      <span>Library and documentation commands</span
+      ><button type="button" data-copy="code-checks">Copy</button>
+    </div>
+    <pre><code id="code-checks">npm ci
+npm run package:check # build and check the independent React 19 tarball consumer
+npm run check         # serial library quality gate
+npm run docs:build    # self-contained offline HTML, including typed live examples
+
+# Open docs/site/build/index.html in your browser.</code></pre>
+  </div>
+  <p>
+    The library gate requires 100% lines, statements, functions and branches per executable
+    production file, including unimported library sources. Documentation examples are typechecked
+    separately and use the built public package entries. They are not part of the published library
+    runtime.
+  </p>
+  <p>
+    Read AGENTS.md, CLAUDE.md and docs/development before changing ownership or tooling. Keep checks
+    short and serial, with one test worker. Host applications test their own browser compatibility,
+    audio lifecycle and rendering/export behavior.
+  </p>
+  <p>
+    This page is generated from authored HTML chapters, actual React example sources and current
+    TypeScript API definitions. Rebuilding refreshes the examples and prop tables together. All
+    assets, React and styles are embedded; opening the resulting file needs no server or CDN.
+  </p>
+</section>

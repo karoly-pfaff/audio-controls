@@ -1,0 +1,40 @@
+# Installed dependencies and optional local npm cache
+node_modules/
+.npm/
+
+# Generated library/site output, coverage and package candidates
+build/
+coverage/
+artifacts/
+*.tgz
+*.tsbuildinfo
+
+# Disposable tooling caches
+.eslintcache
+.cache/
+.vite/
+.vite-temp/
+
+# Local browser snapshots, screenshots and test-runner reports
+.playwright-cli/
+/output/playwright/
+/test-results/
+/playwright-report/
+/blob-report/
+
+# Private local records and environment settings; retain shareable templates
+/.local/
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# npm diagnostics and editor/OS temporary files
+npm-debug.log*
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~

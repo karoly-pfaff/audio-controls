@@ -1,0 +1,41 @@
+<section id="knob">
+  <span class="section-number">05 / AUDIO CONTROLS</span>
+  <h2>Knob</h2>
+  <span class="import-path">import { Knob } from '@karoly-pfaff/audio-controls-react'</span>
+  <p>
+    A compact SVG control for pan and other bounded values. Pointer dragging, direct ring selection
+    and keyboard adjustment all feed the same controlled callback.
+  </p>
+  <!-- EXAMPLE:knob -->
+  <h3>Props</h3>
+  <!-- API:Knob -->
+  <ul>
+    <li>
+      Defaults: <code>min=-1</code>, <code>max=1</code>, <code>step=0.01</code>,
+      <code>unit="L/R"</code>. It has the Slider contract except <code>showLabel</code>.
+    </li>
+    <li>
+      Drag vertically to adjust. A pointer press outside the center dead zone first selects a value
+      on the arc.
+    </li>
+    <li>
+      <kbd>↑</kbd>/<kbd>→</kbd> increase; <kbd>↓</kbd>/<kbd>←</kbd> decrease; <kbd>Home</kbd>/<kbd
+        >End</kbd
+      >
+      select range ends.
+    </li>
+    <li>
+      Double-click resets to zero, clamped to the supplied range. It does not choose the midpoint of
+      an arbitrary range.
+    </li>
+    <li>
+      The SVG exposes <code>role="slider"</code> and a value text. Disabled knobs cannot be adjusted
+      and leave the tab order.
+    </li>
+  </ul>
+  <p>
+    The SVG has a 32×32 view box. A built-in theme displays it at 40px using --acr-knob-size. Scale
+    it with host CSS while retaining its view box. The example also includes a pan Slider bound to
+    the same state.
+  </p>
+</section>

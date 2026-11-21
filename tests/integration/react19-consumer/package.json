@@ -1,0 +1,18 @@
+{
+  "name": "audio-controls-react-19-consumer-check",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@karoly-pfaff/audio-controls-react": "file:../../../artifacts/audio-controls-react.tgz",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "6.0.3"
+  },
+  "scripts": {
+    "check": "tsc --noEmit && node ssr-smoke.mjs && node style-import-smoke.mjs"
+  }
+}

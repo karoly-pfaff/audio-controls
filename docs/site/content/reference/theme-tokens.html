@@ -1,0 +1,136 @@
+<section id="theme-tokens">
+  <h2>Theme token reference</h2>
+  <p>
+    Override these CSS custom properties on a theme container or a more specific control scope.
+    Palette selectors use zero specificity, so your named class can override them without
+    <code>!important</code>.
+  </p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Light</th>
+          <th>Dark</th>
+          <th>Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>--acr-surface</code></td>
+          <td>#ffffff</td>
+          <td>#1a1e2b</td>
+          <td>Theme container and timeline content</td>
+        </tr>
+        <tr>
+          <td><code>--acr-surface-raised</code></td>
+          <td>#f2f4f8</td>
+          <td>#252c3e</td>
+          <td>Buttons and SVG waveform surface</td>
+        </tr>
+        <tr>
+          <td><code>--acr-text</code></td>
+          <td>#202537</td>
+          <td>#ecedf5</td>
+          <td>Primary labels, icons and knob readout</td>
+        </tr>
+        <tr>
+          <td><code>--acr-muted</code></td>
+          <td>#5f687c</td>
+          <td>#a5b1c9</td>
+          <td>Secondary values, ruler and meter labels</td>
+        </tr>
+        <tr>
+          <td><code>--acr-border</code></td>
+          <td>#7b879d</td>
+          <td>#71809b</td>
+          <td>Button/viewport borders, knob track, meter background</td>
+        </tr>
+        <tr>
+          <td><code>--acr-accent</code></td>
+          <td>#6845d6</td>
+          <td>#b49bff</td>
+          <td>Native range accents, active buttons, playhead and hover</td>
+        </tr>
+        <tr>
+          <td><code>--acr-on-accent</code></td>
+          <td>#ffffff</td>
+          <td>#19122e</td>
+          <td>Active-button text/icons</td>
+        </tr>
+        <tr>
+          <td><code>--acr-focus</code></td>
+          <td>#6845d6</td>
+          <td>#ccbaff</td>
+          <td>Visible keyboard focus</td>
+        </tr>
+        <tr>
+          <td><code>--acr-waveform</code></td>
+          <td>#7653ce</td>
+          <td>#b19aee</td>
+          <td>SVG timeline waveform fill</td>
+        </tr>
+        <tr>
+          <td><code>--acr-meter</code></td>
+          <td>#147d68</td>
+          <td>#68d6b4</td>
+          <td>Normalized level bar fill</td>
+        </tr>
+        <tr>
+          <td><code>--acr-mute</code></td>
+          <td>#a92e3c</td>
+          <td>#ffb0b5</td>
+          <td>Active mute color</td>
+        </tr>
+        <tr>
+          <td><code>--acr-solo</code></td>
+          <td>#76550a</td>
+          <td>#f4d98b</td>
+          <td>Active solo color</td>
+        </tr>
+        <tr>
+          <td><code>--acr-canvas-surface</code></td>
+          <td colspan="2">#111827</td>
+          <td>Dark raster plot surface in both themes</td>
+        </tr>
+        <tr>
+          <td><code>--acr-radius</code></td>
+          <td colspan="2">6px</td>
+          <td>Buttons, viewport and plot corner radius</td>
+        </tr>
+        <tr>
+          <td><code>--acr-control-height</code></td>
+          <td colspan="2">32px</td>
+          <td>Button minimum height and region lane height</td>
+        </tr>
+        <tr>
+          <td><code>--acr-gap</code></td>
+          <td colspan="2">8px</td>
+          <td>Transport and zoom spacing</td>
+        </tr>
+        <tr>
+          <td><code>--acr-knob-size</code></td>
+          <td colspan="2">40px</td>
+          <td>Themed knob width and height</td>
+        </tr>
+        <tr>
+          <td><code>--acr-meter-height</code></td>
+          <td colspan="2">8px</td>
+          <td>Meter track height</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Use CSS lengths for sizing tokens and valid CSS colors for palette tokens. Keep
+    foreground/background pairs readable, including active, hover, disabled and focus states. The
+    live demo computes black/white active text for its selected accent; your host owns that policy
+    for custom palettes.
+  </p>
+  <p>
+    Canvas plot pixels are controlled by React props, not SVG/CSS fill. Its default dark plot
+    surface keeps the existing white playhead and source-time ticks visible in both themes. Keep a
+    contrasting raster waveform color and consider those fixed overlays when changing the canvas
+    surface.
+  </p>
+</section>

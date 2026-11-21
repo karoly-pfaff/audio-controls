@@ -1,0 +1,53 @@
+<section id="canvas-waveform">
+  <span class="section-number">10 / AUDIO CONTROLS</span>
+  <h2>CanvasWaveform</h2>
+  <span class="import-path"
+    >import { CanvasWaveform } from '@karoly-pfaff/audio-controls-react'</span
+  >
+  <p>
+    A cached canvas waveform for compact players and track lanes. It accepts prepared extrema and a
+    normalized playhead, with optional controlled seeking.
+  </p>
+  <!-- EXAMPLE:canvas-waveform -->
+  <h3>Props</h3>
+  <!-- API:CanvasWaveform -->
+  <ul>
+    <li>
+      Default intrinsic size is 800×48 pixels; default waveform color is <code>#00e5ff</code>.
+    </li>
+    <li>
+      <code>peaks=null</code> represents unavailable audio. It does not synthesize waveform data.
+    </li>
+    <li>
+      <code>playhead</code> and <code>onSeek</code> use a 0–1 ratio.
+      <code>tickDurationSeconds</code> supplies source duration for 30-second tick marks.
+    </li>
+    <li>
+      Interactive behavior defaults on when both peaks and <code>onSeek</code> are present. Set
+      <code>interactive={false}</code> for a purely visual view.
+    </li>
+    <li>
+      Keyboard arrows adjust the ratio by 0.01, Home selects 0 and End selects 1. The interactive
+      canvas exposes slider semantics.
+    </li>
+    <li>
+      <code>handlers</code> can replace pointer/key behavior for host-owned selection and
+      annotations. A supplied handler for an event takes precedence; retain accessible keyboard
+      seeking in the host.
+    </li>
+  </ul>
+  <p>
+    The cached background depends on peak identity, dimensions, color and tick configuration. A new
+    playhead draws over the cached waveform. Supply stable immutable peak arrays, and set intrinsic
+    dimensions deliberately for your host's sizing strategy.
+  </p>
+  <p class="subtle">
+    The built-in themes use a dark canvas plot surface in both palettes for white overlay contrast.
+    Set <code>color</code> to a concrete six-digit hex waveform color; see the
+    <a href="#theme-overrides">canvas theme adapter</a> for a controlled palette example.
+  </p>
+  <p class="subtle">
+    This component does not accept selection/marker props; compose those overlays in your host. The
+    SVG timeline component uses seconds instead of ratios.
+  </p>
+</section>

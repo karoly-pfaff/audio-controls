@@ -1,0 +1,43 @@
+[data-acr-theme] .acr-slider-group {
+  color: var(--acr-text);
+}
+
+[data-acr-theme] .acr-slider-group .slider-value {
+  color: var(--acr-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+[data-acr-theme] .acr-knob-group .knob {
+  width: var(--acr-knob-size);
+  height: var(--acr-knob-size);
+}
+
+[data-acr-theme] .acr-knob-group .knob-value-text {
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+[data-acr-theme] .acr-knob-group .knob[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: default;
+}
+
+[data-acr-theme] .acr-waveform {
+  background: var(--acr-canvas-surface);
+  border-radius: var(--acr-radius);
+}
+
+[data-acr-theme] .acr-stereo-meter .stereo-meter-track {
+  height: var(--acr-meter-height);
+  border-radius: var(--acr-radius);
+  overflow: hidden;
+}
+
+[data-acr-theme] .acr-stereo-meter .stereo-meter-bar {
+  background: var(--acr-meter);
+}
+
+[data-acr-theme] .acr-stereo-meter .stereo-meter-row {
+  color: var(--acr-muted);
+  align-items: center;
+}
