@@ -139,3 +139,7 @@ See [documentation authoring](docs/development/html-documentation.md) for its st
 [Pages setup](docs/release/github-pages.md) for deployment configuration.
 
 The project is [MIT licensed](LICENSE). See the [changelog](CHANGELOG.md) for version contents.
+
+## Support
+
+Support this project through [GitHub Sponsors](https://github.com/sponsors/karoly-pfaff).
